@@ -1,0 +1,25 @@
+{
+	"name": "GuoJiangClub/caterings-cheduling",
+	"description": "GuoJiangClub laravel Catering scheduling",
+	"keywords": [
+		"GuoJiangClub",
+		"laravel",
+		"Catering",
+		"scheduling"
+	],
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@hellobi.com"
+		}
+	],
+	"require": {
+		"php": ">=5.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\Catering\\Component\\Scheduling\\": "src/"
+		}
+	},
+	"license": "MIT"
+}

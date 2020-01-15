@@ -1,0 +1,28 @@
+{
+	"name": "GuoJiangClub/catering-brand",
+	"type": "library",
+	"description": "GuoJiangClub Catering Brand component",
+	"keywords": [
+		"GuoJiangClub",
+		"Catering",
+		"Brand",
+		"component"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"require": {
+		"php": "^5.6|^7.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\Catering\\Component\\Brand\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}

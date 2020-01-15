@@ -1,0 +1,43 @@
+{
+	"name": "GuoJiangClub/catering-core",
+	"type": "library",
+	"description": "GuoJiangClub Catering Core",
+	"keywords": [
+		"GuoJiangClub",
+		"Catering",
+		"Core"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"require": {
+		"php": ">=7.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "~6.0",
+		"orchestra/testbench": "~3.5",
+		"orchestra/database": "~3.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\Catering\\Core\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"GuoJiangClub\\Catering\\Core\\Test\\": "tests"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+			]
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}

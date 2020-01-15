@@ -1,0 +1,23 @@
+{
+	"name": "GuoJiangClub/ec-catering-backend",
+	"description": "GuoJiangClub catering backend",
+	"keywords": [
+		"GuoJiangClub",
+		"catering",
+		"backend"
+	],
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"require": {
+	},
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\EC\\Catering\\Backend\\": "src/"
+		}
+	},
+	"license": "MIT"
+}

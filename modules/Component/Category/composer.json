@@ -1,0 +1,29 @@
+{
+	"name": "GuoJiangClub/Category",
+	"type": "library",
+	"description": "GuoJiangClub Catering Category component",
+	"keywords": [
+		"GuoJiangClub",
+		"Catering",
+		"Category",
+		"component"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"require": {
+		"php": "^5.6|^7.0",
+		"kalnoy/nestedset": "^4.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\Catering\\Component\\Category\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}

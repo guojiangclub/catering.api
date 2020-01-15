@@ -1,0 +1,23 @@
+{
+	"name": "GuoJiangClub/ec-catering-Core",
+	"description": "GuoJiangClub catering Core",
+	"keywords": [
+		"GuoJiangClub",
+		"catering",
+		"Core"
+	],
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"require": {
+	},
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\EC\\Catering\\Core\\": "src/"
+		}
+	},
+	"license": "MIT"
+}

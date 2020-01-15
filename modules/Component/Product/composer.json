@@ -1,0 +1,29 @@
+{
+	"name": "GuoJiangClub/catering-product",
+	"type": "library",
+	"description": "GuoJiangClub Catering Product component",
+	"keywords": [
+		"GuoJiangClub",
+		"Catering",
+		"Product",
+		"component"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"require": {
+		"php": "^5.6|^7.0",
+		"prettus/l5-repository": "^2.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\Catering\\Component\\Product\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}

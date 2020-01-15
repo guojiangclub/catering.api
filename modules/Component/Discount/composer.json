@@ -1,0 +1,30 @@
+{
+	"name": "GuoJiangClub/catering-discount",
+	"type": "library",
+	"description": "GuoJiangClub catering discount component",
+	"keywords": [
+		"GuoJiangClub",
+		"Catering",
+		"discount",
+		"component"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"require": {
+		"php": "^5.6|^7.0",
+		"ibrand/laravel-cache": "~1.0.0",
+		"prettus/l5-repository": "^2.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\Catering\\Component\\Discount\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
