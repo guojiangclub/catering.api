@@ -12,7 +12,11 @@ class InstallCommand extends Command
 
 	public function handle()
 	{
+		$this->call('ibrand:backend-install');
+		$this->call('ibrand:backend-install-extensions');
 		$this->call('import:catering-backend-menus');
-		//$this->call('roles:factory');
+		$this->call('ibrand:store-default-value');
+		$this->call('ibrand:store-default-specs');
+		$this->call('roles:factory');
 	}
 }

@@ -11,6 +11,8 @@
 
 namespace GuoJiangClub\EC\Catering\Backend\Providers;
 
+use GuoJiangClub\EC\Catering\Backend\Console\SetDefaultValueCommand;
+use GuoJiangClub\EC\Catering\Backend\Console\SpecCommand;
 use GuoJiangClub\EC\Catering\Backend\Service\ExcelExportsService;
 use GuoJiangClub\EC\Catering\Backend\Service\GoodsService;
 use GuoJiangClub\EC\Catering\Backend\Service\OrderService;
@@ -66,6 +68,8 @@ class BackendServiceProvider extends ServiceProvider
 			InstallCommand::class,
 			BackendMenusCommand::class,
 			RolesCommand::class,
+			SetDefaultValueCommand::class,
+			SpecCommand::class,
 		]);
 	}
 

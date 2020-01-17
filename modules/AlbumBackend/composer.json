@@ -1,0 +1,25 @@
+{
+	"name": "GuoJiangClub/catering-albumBackend",
+	"description": "GuoJiangClub Catering GuoJiangClub component",
+	"keywords": [
+		"GuoJiangClub",
+		"Catering",
+		"File",
+		"image upload",
+		"component"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\Catering\\AlbumBackend\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}

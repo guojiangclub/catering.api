@@ -23,6 +23,7 @@ use GuoJiangClub\Catering\Component\Recharge\RechargeServiceProvider;
 use GuoJiangClub\Catering\Component\Scheduling\Providers\SchedulingProvider;
 use GuoJiangClub\Catering\Component\Shipping\ShippingServiceProvider;
 use GuoJiangClub\Catering\Component\User\UserServiceProvider;
+use GuoJiangClub\Catering\AlbumBackend\Providers\AlbumBackendServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Schema;
 
@@ -71,5 +72,6 @@ class CoreServiceProvider extends ServiceProvider
 		$this->app->register(BrandServiceProvider::class);
 		$this->app->register(CategoryServiceProvider::class);
 		$this->app->register(ShippingServiceProvider::class);
+		$this->app->register(AlbumBackendServiceProvider::class);
 	}
 }
