@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class GiftActivity extends Model
 {
-	public $table = 'st_gift_activity';
-
 	public $guarded = ['id'];
 
 	const TYPE_RANDOM = 'random';
 	const TYPE_ALL    = 'all';
+
+	public function __construct(array $attributes = [])
+	{
+		parent::__construct($attributes);
+
+		$prefix = config('ibrand.shitang-api.database.prefix', 'ca_');
+
+		$this->setTable($prefix . 'gift_activity');
+	}
 
 	public function gift()
 	{

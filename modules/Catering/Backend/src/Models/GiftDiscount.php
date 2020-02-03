@@ -7,9 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class GiftDiscount extends Model
 {
-	public $table = 'st_gift_discount';
-
 	public $guarded = ['id'];
+
+	public function __construct(array $attributes = [])
+	{
+		parent::__construct($attributes);
+
+		$prefix = config('ibrand.shitang-api.database.prefix', 'ca_');
+
+		$this->setTable($prefix . 'gift_discount');
+	}
 
 	public function discount()
 	{

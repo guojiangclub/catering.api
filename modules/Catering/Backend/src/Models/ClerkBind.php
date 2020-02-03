@@ -3,11 +3,17 @@
 namespace GuoJiangClub\Catering\Backend\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class ClerkBind extends Model
 {
-	public $table = 'st_clerk_bind';
-
 	public $guarded = ['id'];
+
+	public function __construct(array $attributes = [])
+	{
+		parent::__construct($attributes);
+
+		$prefix = config('ibrand.shitang-api.database.prefix', 'ca_');
+
+		$this->setTable($prefix . 'clerk_bind');
+	}
 }

@@ -7,9 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class CouponCenterItem extends Model
 {
-	protected $table = 'st_coupon_center_item';
-
 	protected $guarded = ['id'];
+
+	public function __construct(array $attributes = [])
+	{
+		parent::__construct($attributes);
+
+		$prefix = config('ibrand.shitang-api.database.prefix', 'ca_');
+
+		$this->setTable($prefix . 'coupon_center_item');
+	}
 
 	public function center()
 	{
