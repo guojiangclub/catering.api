@@ -25,12 +25,6 @@ class ServerServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-		if ($this->app->runningInConsole()) {
-			$this->publishes([
-				__DIR__ . '/../config.php' => config_path('ibrand/shitang-api.php'),
-			]);
-		}
-
 		foreach ($this->subscribe as $item) {
 			Event::subscribe($item);
 		}
@@ -38,10 +32,6 @@ class ServerServiceProvider extends ServiceProvider
 
 	public function register()
 	{
-		$this->mergeConfigFrom(
-			__DIR__ . '/../config.php', 'ibrand.shitang-api'
-		);
-
 		$this->app->register(RouteServiceProvider::class);
 
 		$this->app->singleton(DiscountRepository::class, DiscountRepositoryEloquent::class);

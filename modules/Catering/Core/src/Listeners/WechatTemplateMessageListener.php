@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/8/5
- * Time: 14:01
- */
 
 namespace GuoJiangClub\Catering\Core\Listeners;
 
 use Carbon\Carbon;
-use ElementVip\Component\Recharge\Models\BalanceOrder;
-use ElementVip\Component\User\Models\User;
+use GuoJiangClub\Catering\Component\Recharge\Models\BalanceOrder;
+use GuoJiangClub\Catering\Core\Auth\User;
 use GuoJiangClub\Catering\Backend\Models\Order;
 use GuoJiangClub\Catering\Core\Notifications\BalanceChange;
 use GuoJiangClub\Catering\Core\Notifications\CouponChange;

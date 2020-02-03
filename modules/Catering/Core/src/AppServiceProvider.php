@@ -44,10 +44,13 @@ class AppServiceProvider extends ServiceProvider
 
 		Schema::defaultStringLength(191);
 
-		/*if ($this->app->runningInConsole()) {
+		if ($this->app->runningInConsole()) {
+			$this->publishes([
+				__DIR__ . '/config.php' => config_path('ibrand/shitang-api.php'),
+			]);
 
 			$this->loadMigrationsFrom(__DIR__ . '/../migrations');
-		}*/
+		}
 
 		$this->registerPolicies($gate);
 
@@ -65,6 +68,10 @@ class AppServiceProvider extends ServiceProvider
 
 	public function register()
 	{
+		$this->mergeConfigFrom(
+			__DIR__ . '/config.php', 'ibrand.shitang-api'
+		);
+
 		$this->app->bind(BaseUser::class, User::class);
 
 		$this->app->bind(UserRepository::class, UserRepositoryEloquent::class);
