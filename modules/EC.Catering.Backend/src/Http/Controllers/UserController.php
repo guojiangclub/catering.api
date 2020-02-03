@@ -11,16 +11,13 @@
 
 namespace GuoJiangClub\EC\Catering\Backend\Http\Controllers;
 
-use Carbon\Carbon;
 use GuoJiangClub\Catering\Component\Point\Model\Point;
 use GuoJiangClub\Catering\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Catering\Component\User\Models\ElGroup;
 use GuoJiangClub\Catering\Component\Balance\Model\Balance;
 use GuoJiangClub\EC\Catering\Backend\Models\User;
 use GuoJiangClub\EC\Catering\Backend\Models\UserGroup;
-use ElementVip\Notifications\PointChanged;
-use ElementVip\Notifications\PointRecord;
-use ElementVip\Store\Backend\Facades\ExcelExportsService;
+use GuoJiangClub\EC\Catering\Backend\Facades\ExcelExportsService;
 use GuoJiangClub\EC\Catering\Backend\Repositories\UserRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
@@ -244,19 +241,6 @@ class UserController extends Controller
 
 		$this->userRepository->update($input, $id);
 
-		if (request()->has('permissions')) {
-			$selectRoles = request()->permissions;
-		} else {
-			$selectRoles = [];
-		}
-		$roles = Role::pluck('id')->toArray();
-		if (!empty($roles)) {
-			$user->detachRoles($roles);
-		}
-		if (!empty($selectRoles)) {
-			$user->attachRoles($selectRoles);
-		}
-
 		$selectGroups = request('userGroups') ? request('userGroups') : [];
 		$groups       = ElGroup::pluck('id')->toArray();
 		if (!empty($groups)) {
@@ -466,20 +450,10 @@ class UserController extends Controller
 		if (request('value') < 0) {
 			$data['valid_time'] = 0;
 		}
-		$point = Point::create($data);
+
+		Point::create($data);
 
 		event('point.change', $id);
-
-		$user = User::find($id);
-		$user->notify(new PointRecord(['point' => [
-			'user_id'    => $id,
-			'action'     => 'admin_action',
-			'note'       => request('note'),
-			'value'      => request('value'),
-			'valid_time' => 0,
-			'status'     => 1,]]));
-
-		$user->notify((new PointChanged(compact('point')))->delay(Carbon::now()->addSecond(30)));
 
 		return $this->ajaxJson();
 	}

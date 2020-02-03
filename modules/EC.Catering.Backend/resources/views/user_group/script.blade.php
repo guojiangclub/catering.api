@@ -29,9 +29,9 @@
     var logoPicker = WebUploader.create({
 	    auto: true,
 	    swf: '{{url(env("APP_URL").'/assets/backend/libs/webuploader-0.1.5/Uploader.swf')}}',
-	    server: '{{route('file.upload',['_token'=>csrf_token()])}}',
+	    server: '{{route('upload.image',['_token'=>csrf_token()])}}',
 	    pick: '#logoPicker',
-	    fileVal: 'file',
+	    fileVal: 'upload_image',
 	    accept: {
 		    title: 'Images',
 		    extensions: 'gif,jpg,jpeg,bmp,png',

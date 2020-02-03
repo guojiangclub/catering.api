@@ -79,7 +79,6 @@ $router->group(['prefix' => 'admin/member/statistics'], function () use ($router
 	$router->get('index', 'StatisticsController@index')->name('admin.statistics.index');
 });
 
-
 //会员积分
 $router->group(['prefix' => 'admin/member/points'], function () use ($router) {
 	$router->get('/', 'PointController@index')->name('admin.users.pointlist');
@@ -171,7 +170,6 @@ $router->group(['prefix' => 'admin/store/order'], function () use ($router) {
 	$router->post('postAddress', 'OrdersController@postAddress')->name('admin.orders.postAddress');
 });
 
-
 //积分商城
 $router->group(['prefix' => 'admin/store/point-mall', 'namespace' => 'PointMall'], function () use ($router) {
 	$router->group(['prefix' => 'goods'], function () use ($router) {
@@ -187,8 +185,11 @@ $router->group(['prefix' => 'admin/store/point-mall', 'namespace' => 'PointMall'
 	});
 });
 
-
 $router->group(['prefix' => 'admin/store'], function () use ($router) {
+	$router->post('upload/image', 'ImageController@postUpload')->name('upload.image');
+	$router->post('upload/excel', 'ImageController@ExcelUpload')->name('upload.excel');
+	$router->post('upload/uploadExcelFile', 'ImageController@uploadExcelFile')->name('upload.uploadExcelFile');
+
 	//新的规格管理
 	$router->group(['prefix' => 'specs'], function () use ($router) {
 
@@ -209,7 +210,6 @@ $router->group(['prefix' => 'admin/store'], function () use ($router) {
 
 		$router->post('delete/{id}', 'GoodsSpecController@destroy')->name('admin.goods.spec.delete');
 	});
-
 
 	//新模型管理
 	$router->group(['prefix' => 'models'], function () use ($router) {
@@ -239,7 +239,6 @@ $router->group(['prefix' => 'admin/store'], function () use ($router) {
 //        $router->post('checkSpec/{id}','GoodsModelsController@checkSpec')->name('admin.goods.model.checkSpec');
 
 	});
-
 
 	//新产品
 	$router->group(['prefix' => 'goods'], function () use ($router) {
@@ -289,7 +288,6 @@ $router->group(['prefix' => 'admin/store'], function () use ($router) {
 			});
 		});
 	});
-
 
 	//品牌
 	$router->resource('brand', 'BrandController');

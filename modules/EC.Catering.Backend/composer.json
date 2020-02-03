@@ -15,6 +15,9 @@
 	"require": {
 	},
 	"autoload": {
+		"files": [
+			"src/helpers.php"
+		],
 		"psr-4": {
 			"GuoJiangClub\\EC\\Catering\\Backend\\": "src/"
 		}

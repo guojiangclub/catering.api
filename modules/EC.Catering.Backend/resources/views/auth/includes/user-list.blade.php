@@ -5,7 +5,6 @@
         <th>昵称</th>
         <th>电话</th>
         <th>积分</th>
-        <th>角色</th>
         <th class="visible-lg">注册时间</th>
         <th>操作</th>
     </tr>
@@ -17,9 +16,6 @@
             <td>{!! $user->nick_name !!}</td>
             <td>{!! $user->mobile !!}</td>
             <td>{!! $user->available_integral !!}</td>
-            <td>
-                {{ implode(',' , $user->roles->pluck('display_name')->toArray()) }}
-            </td>
             <td class="visible-lg">{!! $user->created_at !!}</td>
             <td>
                 @if(empty($user->deleted_at))

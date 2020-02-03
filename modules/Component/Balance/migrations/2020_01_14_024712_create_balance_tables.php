@@ -18,7 +18,7 @@ class CreateBalanceTables extends Migration
 			Schema::create($prefix . 'balance', function (Blueprint $table) {
 				$table->increments('id');
 				$table->integer('user_id')->unsigned();
-				$table->integer('type')->nullable();
+				$table->string('type')->nullable();
 				$table->string('note')->nullable();
 				$table->integer('value');
 				$table->integer('current_balance')->default(0);

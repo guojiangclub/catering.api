@@ -83,21 +83,6 @@
                 </div><!--form control-->
 
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">角色</label>
-                    <div class="col-lg-10">
-                        @foreach($roles as $role)
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" value="{{$role->id}}"
-                                           name="permissions[]" {{ $user->hasRole($role->name) ? 'checked' : ''}}>
-                                    <i></i> {{$role->display_name}}
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="col-lg-2 control-label">分组</label>
                     <div class="col-lg-10">
                         @foreach($groups as $group)

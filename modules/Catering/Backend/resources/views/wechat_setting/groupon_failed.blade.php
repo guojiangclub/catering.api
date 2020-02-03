@@ -35,7 +35,7 @@
         border-top: 1px solid #ccc;
     }
 </style>
-@include('store-backend::wechat_setting.include.script')
+@include('backend-shitang::wechat_setting.include.script')
 
 <div class="tabs-container">
     <form method="post" action="{{route('admin.shitang.customer.shop.wechat.save')}}" class="form-horizontal" id="setting_site_form">

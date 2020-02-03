@@ -32,6 +32,6 @@ class Model extends BaseModel implements Transformable
 
 	public function hasManyAttribute()
 	{
-		return $this->belongsToMany(Attribute::class, 'el_model_attribute_relation', 'model_id', 'attribute_id');
+		return $this->belongsToMany(Attribute::class, config('ibrand.app.database.prefix', 'ibrand_') . 'model_attribute_relation', 'model_id', 'attribute_id');
 	}
 }

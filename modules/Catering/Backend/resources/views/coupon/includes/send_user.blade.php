@@ -1,4 +1,4 @@
-@extends('store-backend::layouts.bootstrap_modal')
+@extends('catering-backend::layouts.bootstrap_modal')
 @section('modal_class')
     modal-lg
 @stop
@@ -86,7 +86,7 @@
     <button type="button" onclick="sendIds();"  class="ladda-button btn btn-primary" > 确定
     </button>
 
-    @include('store-backend::promotion.coupon.includes.script')
+    @include('backend-shitang::promotion.coupon.includes.script')
     {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/common.js') !!}
     {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/jquery.http.js') !!}
     {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/page/jquery.pages.js') !!}

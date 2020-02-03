@@ -69,7 +69,7 @@
                         <label class="col-sm-2 control-label">优惠券背景图：</label>
                         <div class="col-sm-4">
                             <div class="pull-left" id="coupon_bg_img">
-                                <img src="{{ settings('coupon_bg_img') ? settings('coupon_bg_img') : "/assets/backend/activity/backgroundImage/pictureBackground.png" }}"
+                                <img src="{{ settings('coupon_bg_img') ? settings('coupon_bg_img') : "/assets/backend/images/backgroundImage/pictureBackground.png" }}"
                                      class="member_shop_logo" width="182px" style="margin-right: 23px;">
                                 <input type="hidden" name="coupon_bg_img" class="form-control"
                                        value="{{ settings('coupon_bg_img') ? settings('coupon_bg_img')  : '' }}">
@@ -84,7 +84,7 @@
                         <label class="col-sm-2 control-label">登录页背景图片：</label>
                         <div class="col-sm-4">
                             <div class="pull-left" id="login_page_bg">
-                                <img src="{{ settings('login_page_bg') ? settings('login_page_bg') : "/assets/backend/activity/backgroundImage/pictureBackground.png" }}"
+                                <img src="{{ settings('login_page_bg') ? settings('login_page_bg') : "/assets/backend/images/backgroundImage/pictureBackground.png" }}"
                                      class="member_shop_logo" width="182px" style="margin-right: 23px;">
                                 <input type="hidden" name="login_page_bg" class="form-control"
                                        value="{{ settings('login_page_bg') ? settings('login_page_bg')  : '' }}">
@@ -99,7 +99,7 @@
                         <label class="col-sm-2 control-label">完善个人信息：</label>
                         <div class="col-sm-4">
                             <div class="pull-left" id="personal-info-img">
-                                <img src="{{ $personal_info_img ? $personal_info_img : "/assets/backend/activity/backgroundImage/pictureBackground.png" }}"
+                                <img src="{{ $personal_info_img ? $personal_info_img : "/assets/backend/images/backgroundImage/pictureBackground.png" }}"
                                      class="member_shop_logo" width="182px" style="margin-right: 23px;">
                                 <input type="hidden" name="personal_info_img" class="form-control"
                                        value="{{ $personal_info_img ? $personal_info_img  : '' }}">
@@ -129,7 +129,7 @@
                         <label class="col-sm-2 control-label">商户logo：</label>
                         <div class="col-sm-4">
                             <div class="pull-left" id="member-shop-logo">
-                                <img src="{{ $member_shop_logo ? $member_shop_logo : "/assets/backend/activity/backgroundImage/pictureBackground.png" }}"
+                                <img src="{{ $member_shop_logo ? $member_shop_logo : "/assets/backend/images/backgroundImage/pictureBackground.png" }}"
                                      class="member_shop_logo" width="182px" style="margin-right: 23px;">
                                 <input type="hidden" name="member_shop_logo" class="form-control"
                                        value="{{ $member_shop_logo ? $member_shop_logo  : '' }}">
@@ -152,7 +152,7 @@
                         <label class="col-sm-2 control-label">小程序背景图片：</label>
                         <div class="col-sm-4">
                             <div class="pull-left" id="background-image">
-                                <img src="{{ $mini_program_bg_img ? $mini_program_bg_img : "/assets/backend/activity/backgroundImage/pictureBackground.png" }}"
+                                <img src="{{ $mini_program_bg_img ? $mini_program_bg_img : "/assets/backend/images/backgroundImage/pictureBackground.png" }}"
                                      class="bg_img" width="182px" style="margin-right: 23px;">
                                 <input type="hidden" name="mini_program_bg_img" class="form-control"
                                        value="{{ $mini_program_bg_img ? $mini_program_bg_img  : '' }}">

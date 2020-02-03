@@ -410,9 +410,9 @@
         var uploader2 = WebUploader.create({
             auto: true,
             swf: '{{url(env("APP_URL").'/assets/backend/libs/webuploader-0.1.5/Uploader.swf')}}',
-            server: '{{route('file.upload',['strategy'=>'video','_token'=>csrf_token()])}}',
+            server: '{{route('upload.image',['strategy'=>'video','_token'=>csrf_token()])}}',
             pick: '#videoPicker',
-            fileVal: 'file',
+            fileVal: 'upload_image',
             accept: {
                 title: 'Video',
                 extensions: 'mp4,wmv,avi,mpg,rmvb,m4v'

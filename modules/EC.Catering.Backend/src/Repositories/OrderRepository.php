@@ -265,7 +265,7 @@ class OrderRepository extends BaseRepository
             } else {
                 $products = Product::where('sku', $where['sku'])->pluck('id')->toArray();
             }
-            $order_ids = OrderItem::where('type', 'ElementVip\Component\Product\Models\Product')
+            $order_ids = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                 ->whereIn('item_id', $products)->pluck('order_id')->toArray();
             $data = $data->whereIn('id', $order_ids);
         }
@@ -408,13 +408,13 @@ class OrderRepository extends BaseRepository
                 ->where('goods_no', $operate, $va)
                 ->join('el_goods_product', 'el_goods.id', '=', 'el_goods_product.goods_id')
                 ->pluck('el_goods_product.id')->toArray();
-            $order_ids_product = OrderItem::where('type', 'ElementVip\Component\Product\Models\Product')
+            $order_ids_product = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                 ->whereIn('item_id', $products)->pluck('order_id')->toArray();
 
             $goods = DB::table('el_goods')
                 ->where('goods_no', $operate, $va)
                 ->pluck('id')->toArray();
-            $order_ids_goods = OrderItem::where('type', 'ElementVip\Component\Product\Models\Goods')
+            $order_ids_goods = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Goods')
                 ->whereIn('item_id', $goods)->pluck('order_id')->toArray();
 
             $data = $data->whereIn('id', array_merge($order_ids_product, $order_ids_goods));
@@ -427,7 +427,7 @@ class OrderRepository extends BaseRepository
             } else {
                 $products = Product::where('sku', $where['sku'])->pluck('id')->toArray();
             }
-            $order_ids = OrderItem::where('type', 'ElementVip\Component\Product\Models\Product')
+            $order_ids = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                 ->whereIn('item_id', $products)->pluck('order_id')->toArray();
             $data = $data->whereIn('id', $order_ids);
         }
@@ -536,13 +536,13 @@ class OrderRepository extends BaseRepository
                     ->where('goods_no', $operate, $va)
                     ->join('el_goods_product', 'el_goods.id', '=', 'el_goods_product.goods_id')
                     ->pluck('el_goods_product.id')->toArray();
-                $order_ids_product = OrderItem::where('type', 'ElementVip\Component\Product\Models\Product')
+                $order_ids_product = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                     ->whereIn('item_id', $products)->pluck('order_id')->toArray();
 
                 $goods = DB::table('el_goods')
                     ->where('goods_no', $operate, $va)
                     ->pluck('id')->toArray();
-                $order_ids_goods = OrderItem::where('type', 'ElementVip\Component\Product\Models\Goods')
+                $order_ids_goods = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Goods')
                     ->whereIn('item_id', $goods)->pluck('order_id')->toArray();
 
                 $data = $data->whereIn('id', array_merge($order_ids_product, $order_ids_goods));
@@ -555,7 +555,7 @@ class OrderRepository extends BaseRepository
                 } else {
                     $products = Product::where('sku', $where['sku'])->pluck('id')->toArray();
                 }
-                $order_ids = OrderItem::where('type', 'ElementVip\Component\Product\Models\Product')
+                $order_ids = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                     ->whereIn('item_id', $products)->pluck('order_id')->toArray();
                 $data = $data->whereIn('id', $order_ids);
             }

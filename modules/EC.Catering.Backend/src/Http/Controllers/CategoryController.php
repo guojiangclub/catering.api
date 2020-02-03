@@ -5,7 +5,6 @@ namespace GuoJiangClub\EC\Catering\Backend\Http\Controllers;
 use GuoJiangClub\EC\Catering\Backend\Models\Category;
 use GuoJiangClub\EC\Catering\Backend\Models\CategoryGroup;
 use GuoJiangClub\Catering\Component\Product\Models\GoodsCategory;
-use iBrand\Backend\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuoJiangClub\EC\Catering\Backend\Repositories\CategoryRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
@@ -74,7 +73,12 @@ class CategoryController extends Controller
 			                         , 'data'       => []]);
 		}
 
-		$category = $this->categoryRepository->create($input);
+		$category = Category::create([
+			'group_id'  => $input['group_id'],
+			'name'      => $input['name'],
+			'parent_id' => $input['parent_id'],
+			'sort'      => $input['sort'],
+		]);
 
 		$this->categoryRepository->setCategoryLevel($category->id, $input['parent_id']);
 

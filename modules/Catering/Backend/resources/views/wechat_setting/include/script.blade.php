@@ -111,6 +111,39 @@
         if (event.target.name == 'wechat_message_groupon_failed[remark]') {
             $('.wechat_message_remark_text_target').html(event.target.value);
         }
+
+	    if (event.target.name == 'wechat_message_st_point_changed[first]') {
+		    $('.wechat_message_first_text_target').html(event.target.value);
+	    }
+
+	    if (event.target.name == 'wechat_message_st_point_changed[remark]') {
+		    $('.wechat_message_remark_text_target').html(event.target.value);
+	    }
+
+	    if (event.target.name == 'wechat_message_st_balance_changed[first]') {
+		    $('.wechat_message_first_text_target').html(event.target.value);
+	    }
+
+	    if (event.target.name == 'wechat_message_st_balance_changed[remark]') {
+		    $('.wechat_message_remark_text_target').html(event.target.value);
+	    }
+
+
+	    if (event.target.name == 'wechat_message_st_coupon_changed[first]') {
+		    $('.wechat_message_first_text_target').html(event.target.value);
+	    }
+
+	    if (event.target.name == 'wechat_message_st_coupon_changed[remark]') {
+		    $('.wechat_message_remark_text_target').html(event.target.value);
+	    }
+
+	    if (event.target.name == 'wechat_message_st_join_success[first]') {
+		    $('.wechat_message_first_text_target').html(event.target.value);
+	    }
+
+	    if (event.target.name == 'wechat_message_st_join_success[remark]') {
+		    $('.wechat_message_remark_text_target').html(event.target.value);
+	    }
     }
     // Internet Explorer
     function OnPropChanged(event) {
@@ -225,5 +258,37 @@
         if (event.propertyName.toLowerCase() == "value" && event.target.name == 'wechat_message_groupon_failed[remark]') {
             $('.wechat_message_remark_text_target').html(event.target.value);
         }
+
+	    if (event.propertyName.toLowerCase() == "value" && event.target.name == 'wechat_message_st_point_changed[first]') {
+		    $('.wechat_message_first_text_target').html(event.target.value);
+	    }
+
+	    if (event.propertyName.toLowerCase() == "value" && event.target.name == 'wechat_message_st_point_changed[remark]') {
+		    $('.wechat_message_remark_text_target').html(event.target.value);
+	    }
+
+	    if (event.propertyName.toLowerCase() == "value" && event.target.name == 'wechat_message_st_balance_changed[first]') {
+		    $('.wechat_message_first_text_target').html(event.target.value);
+	    }
+
+	    if (event.propertyName.toLowerCase() == "value" && event.target.name == 'wechat_message_st_balance_changed[remark]') {
+		    $('.wechat_message_remark_text_target').html(event.target.value);
+	    }
+
+	    if (event.propertyName.toLowerCase() == "value" && event.target.name == 'wechat_message_st_coupon_changed[first]') {
+		    $('.wechat_message_first_text_target').html(event.target.value);
+	    }
+
+	    if (event.propertyName.toLowerCase() == "value" && event.target.name == 'wechat_message_st_coupon_changed[remark]') {
+		    $('.wechat_message_remark_text_target').html(event.target.value);
+	    }
+
+	    if (event.propertyName.toLowerCase() == "value" && event.target.name == 'wechat_message_st_coupon_changed[first]') {
+		    $('.wechat_message_first_text_target').html(event.target.value);
+	    }
+
+	    if (event.propertyName.toLowerCase() == "value" && event.target.name == 'wechat_message_st_coupon_changed[remark]') {
+		    $('.wechat_message_remark_text_target').html(event.target.value);
+	    }
     }
 </script>

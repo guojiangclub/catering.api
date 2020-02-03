@@ -15,7 +15,6 @@ use Carbon\Carbon;
 use GuoJiangClub\Catering\Component\Point\Model\Point;
 use GuoJiangClub\Catering\Component\Point\Repository\PointRepository;
 use GuoJiangClub\EC\Catering\Backend\Models\User;
-use ElementVip\Notifications\PointRecord;
 use GuoJiangClub\Catering\Component\User\Repository\UserRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
@@ -218,14 +217,6 @@ class PointController extends Controller
                             'value' => $value['value'],
                             'status' => 1]);
                         event('point.change', $user->id);
-
-                        $user->notify(new PointRecord(['point' => [
-                            'user_id' => $user->id,
-                            'action' => 'admin_import_action',
-                            'note' => $value['note'],
-                            'value' => $value['value'],
-                            'valid_time' => 0,
-                            'status' => 1, ]]));
                     }
                 }
             }

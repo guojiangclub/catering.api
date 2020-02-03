@@ -63,18 +63,6 @@ class CategoryRepository extends BaseRepository
 		$categories = $this->getSortCategory($groupID);
 
 		return $this->buildCategoryTree($categories, $pid, $html, $dep);
-		/*$result = array();
-		foreach ($categories as $v) {
-			if($v['parent_id'] == $pid)
-			{
-				$v['level'] = $level + 1;
-				$v['html'] = str_repeat($html, $level);
-				$v['dep'] = $dep .'_'. $v['id'];
-				$result[] = $v;
-				$result = array_merge($result, self::getLevelCategory($groupID, $v['id'], $level + 1,'', $v['dep']));
-			}
-		}
-		return $result;*/
 	}
 
 	private function buildCategoryTree($categories, $pid = 0, $html = ' ', $dep = '')
@@ -145,10 +133,6 @@ class CategoryRepository extends BaseRepository
 		}
 
 		return false;
-		/*if ($this->delete($id))
-			if (Category::where('parent_id', $id)->delete())
-				return true;
-		return false;*/
 	}
 
 	/**
@@ -168,6 +152,7 @@ class CategoryRepository extends BaseRepository
 			$category->path  = '/' . $category->id . '/';
 			$category->level = 1;
 		}
+
 		$category->save();
 	}
 

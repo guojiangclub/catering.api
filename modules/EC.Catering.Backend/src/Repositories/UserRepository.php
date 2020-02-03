@@ -89,7 +89,7 @@ class UserRepository extends BaseRepository
 					}
 				}
 			}
-			return $query->with('roles')->orderBy('created_at', 'desc');
+			return $query->orderBy('created_at', 'desc');
 		});
 		if ($limit == 0) {
 			return $data->all();

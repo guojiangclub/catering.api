@@ -6,9 +6,9 @@ use Illuminate\Console\Command;
 use GuoJiangClub\Catering\Backend\Models\Clerk;
 use iBrand\Wechat\Backend\Facades\NoticeService;
 use GuoJiangClub\Catering\Core\Auth\User;
-use ElementVip\Component\User\Models\UserBind;
+use GuoJiangClub\Catering\Component\User\Models\UserBind;
 use GuoJiangClub\Catering\Component\Order\Models\Order;
-use ElementVip\Component\Balance\Model\BalanceOrder;
+use GuoJiangClub\Catering\Component\Recharge\Models\BalanceOrder;
 use GuoJiangClub\Catering\Component\Payment\Models\Payment;
 use GuoJiangClub\Catering\Backend\Models\Coupon\Coupon;
 

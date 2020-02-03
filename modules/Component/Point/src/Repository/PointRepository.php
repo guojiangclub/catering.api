@@ -116,7 +116,7 @@ class PointRepository extends BaseRepository
 
 	public function updateUserPoint($uid)
 	{
-		$user = config('point.user_model');
+		$user = config('auth.providers.users.model');
 		$user = new $user();
 		$user = $user::find($uid);
 		if ($user) {

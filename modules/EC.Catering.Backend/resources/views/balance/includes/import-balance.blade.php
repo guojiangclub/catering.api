@@ -1,4 +1,4 @@
-@extends('catering-backend::bootstrap_modal')
+@extends('catering-backend::layouts.bootstrap_modal')
 
 @section('modal_class')
     modal-lg
@@ -24,7 +24,7 @@
                         <input type="hidden" name="upload_excel"/>
                         <div id="filePicker">选择文件</div>
                         <p class="update_true"></p>
-                        <a no-pjax  href="{{url('/assets/template/member_import.xlsx')}}" target="_self">余额导入模板下载</a>
+                        <a no-pjax  href="{{url('/assets/template/user_balance_import_template.xlsx')}}" target="_self">余额导入模板下载</a>
                     </div>
                 </div>
 
@@ -97,9 +97,3 @@
         });
     </script>
 @stop
-
-
-
-
-
-
