@@ -67,7 +67,7 @@
             <label class="col-sm-2 control-label">活动banner：</label>
             <div class="col-sm-4">
                 <div class="pull-left" id="activity_banner">
-                    <img src="/assets/backend/activity/backgroundImage/pictureBackground.png" width="182px" style="margin-right: 23px;">
+                    <img src="/assets/backend/images/backgroundImage/pictureBackground.png" width="182px" style="margin-right: 23px;">
                     <input type="hidden" name="activity_banner" class="form-control" value="">
                 </div>
                 <div class="clearfix" style="padding-top: 22px;">

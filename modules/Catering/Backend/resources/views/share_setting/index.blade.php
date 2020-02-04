@@ -16,7 +16,7 @@
                         <label class="col-sm-2 control-label">小程序分享图片设置：</label>
                         <div class="col-sm-4">
                             <div class="pull-left" id="homepage-swal-img">
-                                <img src="{{ settings('h5-home-page-share-logo') ? settings('h5-home-page-share-logo') : "/assets/backend/activity/backgroundImage/pictureBackground.png" }}"
+                                <img src="{{ settings('h5-home-page-share-logo') ? settings('h5-home-page-share-logo') : "/assets/backend/images/backgroundImage/pictureBackground.png" }}"
                                      class="member_shop_logo" width="182px" style="margin-right: 23px;">
                                 <input type="hidden" name="h5-home-page-share-logo" class="form-control"
                                        value="{{ settings('h5-home-page-share-logo') ? settings('h5-home-page-share-logo')  : '' }}">
