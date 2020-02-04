@@ -2,14 +2,14 @@
 
 namespace GuoJiangClub\Catering\Server\Http\Controllers;
 
-use ElementVip\Component\Order\Models\Adjustment;
+use GuoJiangClub\Catering\Component\Order\Models\Adjustment;
 use GuoJiangClub\Catering\Backend\Models\Coupon\Coupon;
 use GuoJiangClub\Catering\Backend\Models\Payment;
 use GuoJiangClub\Catering\Server\Service\NotifyService;
-use ElementVip\Component\Order\Repositories\OrderRepository;
+use GuoJiangClub\Catering\Component\Order\Repositories\OrderRepository;
 use GuoJiangClub\Catering\Component\Point\Repository\PointRepository;
-use ElementVip\Component\Payment\Contracts\PaymentChargeContract;
-use ElementVip\Component\Balance\Repository\BalanceRepository;
+use GuoJiangClub\Catering\Component\Payment\Contracts\PaymentChargeContract;
+use GuoJiangClub\Catering\Component\Balance\Repository\BalanceRepository;
 use GuoJiangClub\Catering\Backend\Models\Order;
 use GuoJiangClub\Catering\Backend\Models\Point;
 use Illuminate\Http\Request;

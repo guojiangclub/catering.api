@@ -3,15 +3,14 @@
 namespace GuoJiangClub\Catering\Backend\Repositories;
 
 use GuoJiangClub\Catering\Component\Payment\Models\Payment;
-use ElementVip\Component\Point\Model\Point;
-use ElementVip\Store\Backend\Model\OrderItem;
-use ElementVip\Store\Backend\Model\Product;
+use GuoJiangClub\Catering\Component\Point\Model\Point;
+use GuoJiangClub\EC\Catering\Backend\Models\OrderItem;
+use GuoJiangClub\EC\Catering\Backend\Models\Product;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use GuoJiangClub\Catering\Backend\Models\Order;
-use ElementVip\Store\Backend\Exceptions\GeneralException;
-use ElementVip\Component\Discount\Models\Coupon;
-use ElementVip\Store\Backend\Model\ShippingMethod;
+use GuoJiangClub\Catering\Component\Discount\Models\Coupon;
+use GuoJiangClub\Catering\Component\Shipping\Models\ShippingMethod;
 use DB;
 
 /**
@@ -141,7 +140,7 @@ class OrderRepository extends BaseRepository
 	 * @param $id
 	 *
 	 * @return mixed
-	 * @throws GeneralException
+	 * @throws \Exception
 	 */
 
 	public function findOrThrowException($id)
@@ -151,7 +150,7 @@ class OrderRepository extends BaseRepository
 
 		if (is_null($order)) {
 
-			throw new GeneralException('订单不存在');
+			throw new \Exception('订单不存在');
 		}
 
 		return $order;
@@ -179,7 +178,7 @@ class OrderRepository extends BaseRepository
 	 * @param $id
 	 *
 	 * @return bool
-	 * @throws GeneralException
+	 * @throws \Exception
 	 */
 	public function destroy($id)
 	{
@@ -188,7 +187,7 @@ class OrderRepository extends BaseRepository
 			return true;
 		}
 
-		throw new GeneralException("删除失败，请重试!");
+		throw new \Exception("删除失败，请重试!");
 	}
 
 	/**
@@ -265,7 +264,7 @@ class OrderRepository extends BaseRepository
 			} else {
 				$products = Product::where('sku', $where['sku'])->pluck('id')->toArray();
 			}
-			$order_ids = OrderItem::where('type', 'ElementVip\Component\Product\Models\Product')
+			$order_ids = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
 				->whereIn('item_id', $products)->pluck('order_id')->toArray();
 			$data      = $data->whereIn('id', $order_ids);
 		}
@@ -510,13 +509,13 @@ class OrderRepository extends BaseRepository
 					->where('goods_no', $operate, $va)
 					->join('el_goods_product', 'el_goods.id', '=', 'el_goods_product.goods_id')
 					->pluck('el_goods_product.id')->toArray();
-				$order_ids_product = OrderItem::where('type', 'ElementVip\Component\Product\Models\Product')
+				$order_ids_product = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
 					->whereIn('item_id', $products)->pluck('order_id')->toArray();
 
 				$goods           = DB::table('el_goods')
 					->where('goods_no', $operate, $va)
 					->pluck('id')->toArray();
-				$order_ids_goods = OrderItem::where('type', 'ElementVip\Component\Product\Models\Goods')
+				$order_ids_goods = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Goods')
 					->whereIn('item_id', $goods)->pluck('order_id')->toArray();
 
 				$data = $data->whereIn('id', array_merge($order_ids_product, $order_ids_goods));
@@ -529,12 +528,11 @@ class OrderRepository extends BaseRepository
 				} else {
 					$products = Product::where('sku', $where['sku'])->pluck('id')->toArray();
 				}
-				$order_ids = OrderItem::where('type', 'ElementVip\Component\Product\Models\Product')
+				$order_ids = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
 					->whereIn('item_id', $products)->pluck('order_id')->toArray();
 				$data      = $data->whereIn('id', $order_ids);
 			}
 
-//            $data = $data->with('payment', 'adjustments')->orderBy('user_id')->orderBy('status', 'asc')->get();
 			$data = $data->with('payment', 'adjustments', 'user', 'refunds', 'grouponUser')->orderBy('created_at', 'desc')->get();
 		}
 

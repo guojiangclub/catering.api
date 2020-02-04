@@ -2,11 +2,9 @@
 
 namespace GuoJiangClub\Catering\Core\Notifications;
 
-use ElementVip\Component\Point\Model\Point;
 use ElementVip\Notifications\Channels\Wechat;
 use ElementVip\Notifications\Notification;
 use Illuminate\Bus\Queueable;
-use ElementVip\Component\Balance\Model\Balance;
 
 class CouponChange extends Notification
 {

@@ -5,7 +5,7 @@ namespace GuoJiangClub\Catering\Core\Notifications;
 use ElementVip\Notifications\Channels\Wechat;
 use ElementVip\Notifications\Notification;
 use Illuminate\Bus\Queueable;
-use ElementVip\Component\Balance\Model\Balance;
+use GuoJiangClub\Catering\Component\Balance\Model\Balance;
 
 class BalanceChange extends Notification
 {

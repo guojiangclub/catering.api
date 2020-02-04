@@ -3,7 +3,7 @@
 namespace GuoJiangClub\Catering\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use ElementVip\Component\Payment\Contracts\PaymentChargeContract;
+use GuoJiangClub\Catering\Component\Payment\Contracts\PaymentChargeContract;
 use GuoJiangClub\Catering\Server\Service\NotifyService;
 use Illuminate\Http\Request;
 

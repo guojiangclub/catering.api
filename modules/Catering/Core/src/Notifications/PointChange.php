@@ -2,11 +2,10 @@
 
 namespace GuoJiangClub\Catering\Core\Notifications;
 
-use ElementVip\Component\Point\Model\Point;
+use GuoJiangClub\Catering\Component\Point\Model\Point;
 use ElementVip\Notifications\Channels\Wechat;
 use ElementVip\Notifications\Notification;
 use Illuminate\Bus\Queueable;
-use ElementVip\Component\Balance\Model\Balance;
 
 class PointChange extends Notification
 {
@@ -17,7 +16,7 @@ class PointChange extends Notification
 	/**
 	 * Get the notification's delivery channels.
 	 *
-	 * @param  mixed $notifiable
+	 * @param mixed $notifiable
 	 *
 	 * @return array
 	 */

@@ -15,6 +15,7 @@ use GuoJiangClub\Catering\Component\Balance\BalanceServiceProvider;
 use GuoJiangClub\Catering\Component\Brand\BrandServiceProvider;
 use GuoJiangClub\Catering\Component\Category\CategoryServiceProvider;
 use GuoJiangClub\Catering\Component\Discount\Providers\DiscountServiceProvider;
+use GuoJiangClub\Catering\Component\Gift\GiftServiceProvider;
 use GuoJiangClub\Catering\Component\Order\Providers\OrderServiceProvider;
 use GuoJiangClub\Catering\Component\Payment\Providers\PaymentServiceProvider;
 use GuoJiangClub\Catering\Component\Point\PointServiceProvider;
@@ -73,5 +74,6 @@ class CoreServiceProvider extends ServiceProvider
 		$this->app->register(CategoryServiceProvider::class);
 		$this->app->register(ShippingServiceProvider::class);
 		$this->app->register(AlbumBackendServiceProvider::class);
+		$this->app->register(GiftServiceProvider::class);
 	}
 }

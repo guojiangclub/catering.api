@@ -1,10 +1,6 @@
 <?php
 
 return [
-	'database' => [
-		'prefix' => 'ca_',
-	],
-
 	'routeAttributes' => [
 		'middleware' => ['api', 'cors'],
 	],

@@ -2,7 +2,7 @@
 
 namespace GuoJiangClub\Catering\Backend\Console;
 
-use ElementVip\Component\User\Repository\UserRepository;
+use GuoJiangClub\Catering\Component\User\Repository\UserRepository;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 

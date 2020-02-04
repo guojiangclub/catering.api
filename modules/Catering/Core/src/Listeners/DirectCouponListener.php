@@ -2,7 +2,7 @@
 
 namespace GuoJiangClub\Catering\Core\Listeners;
 
-use ElementVip\Component\Gift\Services\DirectionalCouponService;
+use GuoJiangClub\Catering\Component\Gift\Services\DirectionalCouponService;
 use GuoJiangClub\Catering\Backend\Repositories\GiftDirectionalCouponRepository;
 use GuoJiangClub\Catering\Core\Jobs\AutoDirectionalCoupon;
 

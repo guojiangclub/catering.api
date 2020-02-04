@@ -8,7 +8,7 @@ use Encore\Admin\Layout\Content;
 use iBrand\Backend\Http\Controllers\Controller;
 use GuoJiangClub\Catering\Backend\Models\Coupon\Discount;
 use GuoJiangClub\Catering\Backend\Models\Coupon\Coupon;
-use ElementVip\Store\Backend\Model\User;
+use GuoJiangClub\Catering\Component\User\Models\User;
 use GuoJiangClub\Catering\Backend\Repositories\DiscountRepository;
 use GuoJiangClub\Catering\Backend\Repositories\CouponRepository;
 use Illuminate\Http\Request;

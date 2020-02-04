@@ -13,7 +13,7 @@ class CouponCenterItem extends Model
 	{
 		parent::__construct($attributes);
 
-		$prefix = config('ibrand.shitang-api.database.prefix', 'ca_');
+		$prefix = config('ibrand.app.database.prefix', 'ibrand_');
 
 		$this->setTable($prefix . 'coupon_center_item');
 	}

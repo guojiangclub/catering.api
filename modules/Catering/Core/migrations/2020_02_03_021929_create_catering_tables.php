@@ -13,7 +13,7 @@ class CreateCateringTables extends Migration
 	 */
 	public function up()
 	{
-		$prefix = config('ibrand.shitang-api.database.prefix', 'ca_');
+		$prefix = config('ibrand.app.database.prefix', 'ibrand_');
 		if (!Schema::hasTable($prefix . 'gift_activity')) {
 			Schema::create($prefix . 'gift_activity', function (Blueprint $table) {
 				$table->increments('id');
@@ -195,7 +195,7 @@ class CreateCateringTables extends Migration
 	 */
 	public function down()
 	{
-		$prefix = config('ibrand.shitang-api.database.prefix', 'ca_');
+		$prefix = config('ibrand.app.database.prefix', 'ibrand_');
 
 		Schema::dropIfExists($prefix . 'gift_activity');
 		Schema::dropIfExists($prefix . 'gift_discount');

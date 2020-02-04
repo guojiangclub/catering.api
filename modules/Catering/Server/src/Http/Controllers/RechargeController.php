@@ -2,10 +2,10 @@
 
 namespace GuoJiangClub\Catering\Server\Http\Controllers;
 
-use ElementVip\Component\Balance\Model\Balance;
-use ElementVip\Component\Recharge\Models\BalanceOrder;
-use ElementVip\Component\Payment\Contracts\PaymentChargeContract;
-use ElementVip\Component\Recharge\Repositories\RechargeRuleRepository;
+use GuoJiangClub\Catering\Component\Balance\Model\Balance;
+use GuoJiangClub\Catering\Component\Recharge\Models\BalanceOrder;
+use GuoJiangClub\Catering\Component\Payment\Contracts\PaymentChargeContract;
+use GuoJiangClub\Catering\Component\Recharge\Repositories\RechargeRuleRepository;
 use GuoJiangClub\Catering\Server\Service\NotifyService;
 use Illuminate\Http\Request;
 use Validator;

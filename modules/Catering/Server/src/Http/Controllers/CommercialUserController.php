@@ -4,7 +4,6 @@ namespace GuoJiangClub\Catering\Server\Http\Controllers;
 
 use GuoJiangClub\Catering\Component\Balance\Model\Balance;
 use GuoJiangClub\Catering\Component\User\Repository\UserRepository;
-use GuoJiangClub\Catering\Backend\Models\Order;
 use GuoJiangClub\Catering\Backend\Models\Point;
 use GuoJiangClub\Catering\Server\Transformers\BalanceTransformer;
 use GuoJiangClub\Catering\Server\Transformers\CouponsTransformer;
@@ -13,7 +12,7 @@ use GuoJiangClub\Catering\Server\Transformers\PointTransformer;
 use GuoJiangClub\Catering\Server\Transformers\UserTransformer;
 use GuoJiangClub\Catering\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Catering\Server\Repositories\CouponRepository;
-use ElementVip\Component\Balance\Repository\BalanceRepository;
+use GuoJiangClub\Catering\Component\Balance\Repository\BalanceRepository;
 use GuoJiangClub\Catering\Server\Repositories\OrderRepository;
 
 class CommercialUserController extends Controller

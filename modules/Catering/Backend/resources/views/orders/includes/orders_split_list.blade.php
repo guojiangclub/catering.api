@@ -31,7 +31,7 @@
                     </td>
                     <td style="text-align: center; vertical-align: middle;">
                         <a href="{{route('admin.users.edit', $key)}}">
-                            @if($user=\ElementVip\Component\User\Models\User::find($key))
+                            @if($user=\GuoJiangClub\Catering\Component\User\Models\User::find($key))
                                 @if($user->name)
                                     {{$user->name}}
                                 @elseif($user->mobile)

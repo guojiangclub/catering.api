@@ -3,7 +3,7 @@
 namespace GuoJiangClub\Catering\Server\Http\Controllers;
 
 use EasyWeChat;
-use ElementVip\Component\Balance\Model\Balance;
+use GuoJiangClub\Catering\Component\Balance\Model\Balance;
 use GuoJiangClub\Catering\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Catering\Server\Repositories\CouponRepository;
 use GuoJiangClub\Catering\Server\Transformers\UserTransformer;
