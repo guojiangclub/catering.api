@@ -1,4 +1,4 @@
-@extends('backend-distribution::layouts.bootstrap_modal')
+@extends('catering-backend::layouts.bootstrap_modal')
 
 @section('modal_class')
     modal-lg
