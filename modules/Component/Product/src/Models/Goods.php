@@ -4,7 +4,6 @@ namespace GuoJiangClub\Catering\Component\Product\Models;
 
 use GuoJiangClub\Catering\Component\Discount\Contracts\DiscountItemContract;
 use GuoJiangClub\Catering\Component\Category\Models\Category;
-use GuoJiangClub\Catering\Component\Order\Models\Comment;
 use Illuminate\Database\Eloquent\Model as LaravelModel;
 use Illuminate\Support\Collection;
 use Prettus\Repository\Contracts\Transformable;
