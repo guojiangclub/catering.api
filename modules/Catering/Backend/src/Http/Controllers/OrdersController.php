@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use iBrand\Backend\Http\Controllers\Controller;
 use GuoJiangClub\Catering\Component\Shipping\Models\Shipping;
 use GuoJiangClub\EC\Catering\Backend\Models\OrderItem;
-use ElementVip\Store\Backend\Model\OrderProduce;
+use GuoJiangClub\EC\Catering\Backend\Model\OrderProduce;
 use GuoJiangClub\Catering\Component\Shipping\Models\ShippingMethod;
 use GuoJiangClub\EC\Catering\Backend\Models\Order;
 use Illuminate\Http\Request;

@@ -1,22 +1,21 @@
 <?php
 
-namespace GuoJiangClub\Catering\Core\Notifications;
+namespace GuoJiangClub\EC\Catering\Notifications;
 
 use GuoJiangClub\EC\Catering\Notifications\Channels\Wechat;
-use GuoJiangClub\EC\Catering\Notifications\Notification;
 use Illuminate\Bus\Queueable;
 use GuoJiangClub\Catering\Component\Balance\Model\Balance;
 
-class BalanceChange extends Notification
+class ChargeSuccess extends Notification
 {
     use Queueable;
 
-    protected $balance;
+    protected $charge;
 
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed $notifiable
+     * @param mixed $notifiable
      *
      * @return array
      */
@@ -32,8 +31,8 @@ class BalanceChange extends Notification
      */
     public function handle($notifiable)
     {
-        $this->balance = $this->data['balance'];
-        if (empty($this->balance)) {
+        $this->charge = $this->data['charge'];
+        if (empty($this->charge)) {
             return false;
         }
 
@@ -46,8 +45,7 @@ class BalanceChange extends Notification
 
     private function getData($user)
     {
-
-        $template_settings = app('system_setting')->getSetting('wechat_message_st_balance_changed');
+        $template_settings = app('system_setting')->getSetting('wechat_message_charge_success');
         if (empty($template_settings) || !isset($template_settings['status']) || $template_settings['status'] != 1) {
             return false;
         }
@@ -56,28 +54,22 @@ class BalanceChange extends Notification
         if (!is_numeric($sum)) {
             $sum = 0;
         } else {
-            $sum = (int)$sum;
+            $sum = (int) $sum;
         }
 
         $template = [
-            'first' => $template_settings['first'],
-            'keyword1' => $this->balance['note'],  //交易类型
-            'keyword2' => $this->balance['value'] / 100 . '元',  //交易金额
-            'keyword3' => $this->balance['time'],  //交易时间
-            'keyword4' => ($sum / 100) . '元',  //账户余额
-            'remark' => $template_settings['remark'],
+            'first'    => $template_settings['first'],
+            'keyword1' => ($this->charge['value'] / 100) . '元',
+            'keyword2' => date('Y-m-d H:i'),
+            'keyword3' => ($sum / 100) . '元',
+            'remark'   => $template_settings['remark'],
         ];
-
-        $data = [
+        $url      = app('system_setting')->getSetting('mobile_domain_url');
+        $data     = [
             'template_id' => $template_settings['template_id'],
-            'url' => '',
-            'touser' => $this->getOpenId($user),
-            'data' => $template,
-        ];
-
-        $data["miniprogram"] = [
-            "appid" => env('SHITANG_MINI_PROGRAM_APPID'),
-            "pagepath" => 'pages/member/myMoney/myMoney'
+            'url'         => $url . '/#!/recharge/balance/',
+            'touser'      => $this->getOpenId($user),
+            'data'        => $template,
         ];
 
         return $data;

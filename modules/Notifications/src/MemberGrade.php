@@ -1,18 +1,15 @@
 <?php
 
-namespace GuoJiangClub\Catering\Core\Notifications;
+namespace GuoJiangClub\EC\Catering\Notifications;
 
 use GuoJiangClub\EC\Catering\Notifications\Channels\Wechat;
-use GuoJiangClub\EC\Catering\Notifications\Notification;
 use Illuminate\Bus\Queueable;
 
-class PaidSuccess extends Notification
+class MemberGrade extends Notification
 {
 	use Queueable;
 
-	protected $order;
-
-	protected $remark;
+	protected $member;
 
 	/**
 	 * Get the notification's delivery channels.
@@ -33,9 +30,10 @@ class PaidSuccess extends Notification
 	 */
 	public function handle($notifiable)
 	{
-		$this->order = $this->data['order'];
-
-		$this->remark = $this->data['remark'];
+		$this->member = $this->data['member'];
+		if (empty($this->member)) {
+			return false;
+		}
 
 		if ($this->checkOpenId($notifiable)) {
 			return $this->getData($notifiable);
@@ -46,32 +44,29 @@ class PaidSuccess extends Notification
 
 	private function getData($user)
 	{
-
-		$template_settings = app('system_setting')->getSetting('wechat_message_st_paid_success');
+		$template_settings = app('system_setting')->getSetting('wechat_message_member_grade');
 		if (empty($template_settings) || !isset($template_settings['status']) || $template_settings['status'] != 1) {
 			return false;
 		}
 
 		$template = [
 			'first'    => $template_settings['first'],
-			'keyword1' => $this->order->order_no,
-			'keyword2' => $this->order->total_yuan . '元',
-			'keyword3' => app('system_setting')->getSetting('shop_name'),
-			'keyword4' => date('Y年m月d日 H:i:s', strtotime($this->order->created_at)),
-			'remark'   => $this->remark,
+			'keyword1' => $this->member['original_grade'],
+			'keyword2' => $this->member['new_grade'],
+			'remark'   => $template_settings['remark'],
 		];
-
-		$data = [
+		$url      = app('system_setting')->getSetting('mobile_domain_url');
+		$data     = [
 			'template_id' => $template_settings['template_id'],
-			'url'         => '',
+			'url'         => $url . '/#!/user',
 			'touser'      => $this->getOpenId($user),
 			'data'        => $template,
 		];
 
-		$data["miniprogram"] = [
-			"appid"    => env('SHITANG_MINI_PROGRAM_APPID'),
-			"pagepath" => 'pages/order/index/index',
-		];
+        $data["miniprogram"] = [
+            "appid" => env('SHITANG_MINI_PROGRAM_APPID'),
+            "pagepath" => 'aa'
+        ];
 
 		return $data;
 	}

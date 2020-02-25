@@ -1,0 +1,21 @@
+{
+	"name": "GuoJiangClub/ec-catering-notifications",
+	"description": "GuoJiangClub for Laravel Application.",
+	"keywords": [
+		"GuoJiangClub ",
+		"notifications ",
+		"laravel"
+	],
+	"authors": [
+		{
+			"name": "tangqi",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"GuoJiangClub\\EC\\Catering\\Notifications\\": "src/"
+		}
+	},
+	"license": "MIT"
+}

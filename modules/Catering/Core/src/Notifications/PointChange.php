@@ -3,8 +3,8 @@
 namespace GuoJiangClub\Catering\Core\Notifications;
 
 use GuoJiangClub\Catering\Component\Point\Model\Point;
-use ElementVip\Notifications\Channels\Wechat;
-use ElementVip\Notifications\Notification;
+use GuoJiangClub\EC\Catering\Notifications\Channels\Wechat;
+use GuoJiangClub\EC\Catering\Notifications\Notification;
 use Illuminate\Bus\Queueable;
 
 class PointChange extends Notification

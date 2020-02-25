@@ -10,7 +10,7 @@ use GuoJiangClub\Catering\Component\Order\Models\OrderItem;
 use GuoJiangClub\Catering\Component\Order\Models\Adjustment;
 use GuoJiangClub\Catering\Component\Point\Repository\PointRepository;
 use GuoJiangClub\Catering\Component\Point\Model\Point;
-use ElementVip\Notifications\PointRecord;
+use GuoJiangClub\EC\Catering\Notifications\PointRecord;
 
 class OrderEventListener
 {

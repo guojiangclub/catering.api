@@ -9,7 +9,7 @@ use GuoJiangClub\Catering\Component\User\Models\User;
 use GuoJiangClub\Catering\Component\Order\Processor\OrderProcessor;
 use GuoJiangClub\Catering\Component\Order\Repositories\OrderRepository;
 use GuoJiangClub\Catering\Component\Payment\Models\Payment;
-use ElementVip\Notifications\ChargeSuccess;
+use GuoJiangClub\EC\Catering\Notifications\ChargeSuccess;
 use GuoJiangClub\Catering\Component\Point\Repository\PointRepository;
 
 class PayService

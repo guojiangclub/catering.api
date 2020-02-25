@@ -1,0 +1,30 @@
+{
+	"name": "GuoJiangClub/ec-catering-wechat-server",
+	"type": "library",
+	"description": "GuoJiangClub Wechat Server",
+	"keywords": [
+		"GuoJiangClub",
+		"wechat",
+		"component"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "GuoJiangClub Crop",
+			"email": "tangqi@element.vip"
+		}
+	],
+	"require": {
+		"php": "^5.6|^7.0"
+	},
+	"autoload": {
+		"files": [
+			"src/helpers.php"
+		],
+		"psr-4": {
+			"GuoJiangClub\\EC\\Catering\\Wechat\\Server\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
