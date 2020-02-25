@@ -5,6 +5,9 @@ $router->post('union_notify/{type}', 'UnionPayNotifyController@notify');
 
 $router->get('system/init', 'SystemSettingController@init')->name('api.system.init');
 $router->get('users/balance/schemes', 'BalanceController@getSchemes')->name('api.user.balance.schemes');
+$router->group(config('ibrand.shitang-api.routeAuthAttributes'), function($router){
+    $router->get('users/balance/sum', 'BalanceController@sum')->name('api.user.balance.sum');
+});
 
 $router->group(['prefix' => 'shitang'], function () use ($router) {
 	$router->get('shop/info', 'UserController@shopInfo');
