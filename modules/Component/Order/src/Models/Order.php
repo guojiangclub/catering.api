@@ -73,8 +73,6 @@ class Order extends Model implements DiscountSubjectContract, PaymentsSubjectCon
 
 		$this->adjustments()->saveMany($this->getAdjustments());
 
-		$this->comments()->saveMany($this->comments);
-
 		return $order;
 	}
 
@@ -103,10 +101,6 @@ class Order extends Model implements DiscountSubjectContract, PaymentsSubjectCon
 		return $this->hasMany(Payment::class);
 	}
 
-	public function comments()
-	{
-		return $this->hasMany(Comment::class);
-	}
 
 	public function coupon()
 	{
@@ -160,11 +154,6 @@ class Order extends Model implements DiscountSubjectContract, PaymentsSubjectCon
 	public function countItems()
 	{
 		return $this->items->count();
-	}
-
-	public function countComments()
-	{
-		return $this->comments->count();
 	}
 
 	/**

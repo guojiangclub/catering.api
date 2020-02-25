@@ -21,7 +21,6 @@ class OrderObserver
                 $order->items()->withTrashed()->forceDelete();
                 $order->adjustments()->withTrashed()->forceDelete();
                 $order->payments()->forceDelete();
-                $order->comments()->withTrashed()->forceDelete();
                 $order->shippings()->withTrashed()->forceDelete();
                 $order->invoices()->forceDelete();
                 $order->refunds()->withTrashed()->forceDelete();
