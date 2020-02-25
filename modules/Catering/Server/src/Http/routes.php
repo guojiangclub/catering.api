@@ -8,6 +8,9 @@ $router->get('users/balance/schemes', 'BalanceController@getSchemes')->name('api
 $router->group(config('ibrand.shitang-api.routeAuthAttributes'), function($router){
     $router->get('users/balance/sum', 'BalanceController@sum')->name('api.user.balance.sum');
     $router->get('users/balance/list', 'BalanceController@index')->name('api.user.balance.list');
+
+    $router->get('users/point/list', 'UserController@pointList')->name('api.user.point.list');
+    $router->get('users/point', 'WalletController@myPoint')->name('api.user.point');
 });
 
 $router->group(['prefix' => 'shitang'], function () use ($router) {
