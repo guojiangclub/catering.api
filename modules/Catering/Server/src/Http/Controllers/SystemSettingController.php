@@ -1,12 +1,12 @@
 <?php
 
-namespace GuoJiangClub\EC\Catering\Server\Http\Controllers;
+namespace GuoJiangClub\Catering\Server\Http\Controllers;
 
 class SystemSettingController extends Controller
 {
     public function index()
     {
-        return $this->api(settings(request('type')));
+        return $this->success(settings(request('type')));
     }
 
     public function site()
@@ -32,7 +32,7 @@ class SystemSettingController extends Controller
             'menu_list'           => $menu_list,
         ];
 
-        return $this->api($data);
+        return $this->success($data);
     }
 
     public function init()
@@ -126,7 +126,7 @@ class SystemSettingController extends Controller
             'accounts'     => ['piwik' => settings('analytics_piwik_id'), 'google' => settings('analytics_google_id')],
         ];
 
-        return $this->api($data);
+        return $this->success($data);
     }
 
     public function testRedirect()
@@ -144,6 +144,6 @@ class SystemSettingController extends Controller
     {
         $data = ['content' => file_get_contents('https://iyoyo.oss-cn-hangzhou.aliyuncs.com/contact.html')];
 
-        return $this->api($data);
+        return $this->success($data);
     }
 }

@@ -3,6 +3,8 @@
 //银商异步通知
 $router->post('union_notify/{type}', 'UnionPayNotifyController@notify');
 
+$router->get('system/init', 'SystemSettingController@init')->name('api.system.init');
+
 $router->group(['prefix' => 'shitang'], function () use ($router) {
 	$router->get('shop/info', 'UserController@shopInfo');
 
