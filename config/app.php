@@ -201,6 +201,7 @@ return [
 
         GuoJiangClub\EC\Catering\Backend\Providers\BackendServiceProvider::class,
         GuoJiangClub\EC\Catering\Core\Providers\CoreServiceProvider::class,
+        GuoJiangClub\EC\Catering\Server\Providers\ServerServiceProvider::class,
         GuoJiangClub\Catering\Backend\BackendProvider::class,
         GuoJiangClub\Catering\Core\AppServiceProvider::class,
         GuoJiangClub\Catering\Server\Providers\ServerServiceProvider::class,
