@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ServerServiceProvider extends ServiceProvider
 {
-    protected function boot()
+    public function boot()
     {
     }
 
