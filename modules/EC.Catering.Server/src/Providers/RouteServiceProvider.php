@@ -2,7 +2,7 @@
 
 namespace GuoJiangClub\EC\Catering\Server\Providers;
 
-use ElementVip\Server\Serializer\DataArraySerializer;
+use GuoJiangClub\EC\Catering\Server\Serializer\DataArraySerializer;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Route;
 use League\Fractal\Manager;

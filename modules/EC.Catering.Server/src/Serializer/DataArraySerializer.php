@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
- namespace ElementVip\Server\Serializer;
+namespace GuoJiangClub\EC\Catering\Server\Serializer;
 
 use League\Fractal\Serializer\ArraySerializer;
 
@@ -19,17 +19,19 @@ class DataArraySerializer extends ArraySerializer
      * Serialize a collection.
      *
      * @param string $resourceKey
-     * @param array $data
+     * @param array  $data
      *
      * @return array
      */
     public function collection($resourceKey, array $data)
     {
-        if (is_null($resourceKey))
+        if (is_null($resourceKey)) {
             return ['status' => true, 'data' => $data];
-        if(empty($resourceKey)){
+        }
+        if (empty($resourceKey)) {
             return $data;
         }
+
         return [$resourceKey => $data];
     }
 
@@ -37,7 +39,7 @@ class DataArraySerializer extends ArraySerializer
      * Serialize an item.
      *
      * @param string $resourceKey
-     * @param array $data
+     * @param array  $data
      *
      * @return array
      */
@@ -46,11 +48,13 @@ class DataArraySerializer extends ArraySerializer
         /*if (empty($resourceKey)) {
             return $data;
         }*/
-        if (is_null($resourceKey))
-            return ['status' => true,'data' => $data];
-        if(empty($resourceKey)){
+        if (is_null($resourceKey)) {
+            return ['status' => true, 'data' => $data];
+        }
+        if (empty($resourceKey)) {
             return $data;
         }
+
         return [$resourceKey => $data];
         /*return ['data' => $data];*/
     }
