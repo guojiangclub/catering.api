@@ -11,7 +11,6 @@ use GuoJiangClub\Catering\Component\Discount\Actions\UnitPointTimesAction;
 use GuoJiangClub\Catering\Component\Discount\Checkers\CartQuantityRuleChecker;
 use GuoJiangClub\Catering\Component\Discount\Checkers\ContainsRoleRuleChecker;
 use GuoJiangClub\Catering\Component\Discount\Checkers\ContainsShopsRuleChecker;
-use GuoJiangClub\Catering\Component\Discount\Checkers\ContainsWechatGroupChecker;
 use GuoJiangClub\Catering\Component\Discount\Checkers\ItemTotalRuleChecker;
 use GuoJiangClub\Catering\Component\Discount\Console\DiscountCommand;
 use GuoJiangClub\Catering\Component\Discount\Models\Coupon;
@@ -62,13 +61,6 @@ class DiscountServiceProvider extends ServiceProvider
 
 	public function register()
 	{
-		$this->app->bind(
-			ContainsWechatGroupChecker::class,
-			ContainsWechatGroupChecker::class
-		);
-
-		$this->app->alias(ContainsWechatGroupChecker::class, ContainsWechatGroupChecker::TYPE);
-
 		$this->app->bind(
 			ItemTotalRuleChecker::class,
 			ItemTotalRuleChecker::class
