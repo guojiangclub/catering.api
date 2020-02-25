@@ -90,9 +90,10 @@
     86 => 'App\\Providers\\RouteServiceProvider',
     87 => 'GuoJiangClub\\EC\\Catering\\Backend\\Providers\\BackendServiceProvider',
     88 => 'GuoJiangClub\\EC\\Catering\\Core\\Providers\\CoreServiceProvider',
-    89 => 'GuoJiangClub\\Catering\\Backend\\BackendProvider',
-    90 => 'GuoJiangClub\\Catering\\Core\\AppServiceProvider',
-    91 => 'GuoJiangClub\\Catering\\Server\\Providers\\ServerServiceProvider',
+    89 => 'GuoJiangClub\\EC\\Catering\\Server\\Providers\\ServerServiceProvider',
+    90 => 'GuoJiangClub\\Catering\\Backend\\BackendProvider',
+    91 => 'GuoJiangClub\\Catering\\Core\\AppServiceProvider',
+    92 => 'GuoJiangClub\\Catering\\Server\\Providers\\ServerServiceProvider',
   ),
   'eager' => 
   array (
@@ -162,9 +163,10 @@
     63 => 'App\\Providers\\RouteServiceProvider',
     64 => 'GuoJiangClub\\EC\\Catering\\Backend\\Providers\\BackendServiceProvider',
     65 => 'GuoJiangClub\\EC\\Catering\\Core\\Providers\\CoreServiceProvider',
-    66 => 'GuoJiangClub\\Catering\\Backend\\BackendProvider',
-    67 => 'GuoJiangClub\\Catering\\Core\\AppServiceProvider',
-    68 => 'GuoJiangClub\\Catering\\Server\\Providers\\ServerServiceProvider',
+    66 => 'GuoJiangClub\\EC\\Catering\\Server\\Providers\\ServerServiceProvider',
+    67 => 'GuoJiangClub\\Catering\\Backend\\BackendProvider',
+    68 => 'GuoJiangClub\\Catering\\Core\\AppServiceProvider',
+    69 => 'GuoJiangClub\\Catering\\Server\\Providers\\ServerServiceProvider',
   ),
   'deferred' => 
   array (
