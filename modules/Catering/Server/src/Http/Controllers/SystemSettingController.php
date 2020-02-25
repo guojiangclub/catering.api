@@ -116,7 +116,7 @@ class SystemSettingController extends Controller
 
         ];
 
-        return $this->api($data);
+        return $this->success($data);
     }
 
     public function analytics()
