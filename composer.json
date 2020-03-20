@@ -9,15 +9,13 @@
 	"type": "project",
 	"require": {
 		"php": ">=7.0.0",
-		"fideloper/proxy": "~3.3",
-		"laravel/framework": "5.5.*",
-		"laravel/tinker": "~1.0",
 		"anam/phantomjs-linux-x86-binary": "^2.1",
 		"anam/phantommagick": "dev-docker",
 		"arrilot/laravel-widgets": "^3.7",
 		"barryvdh/laravel-cors": "^0.10",
 		"dingo/api": "2.0.0-alpha1",
 		"doctrine/dbal": "^2.8",
+		"fideloper/proxy": "~3.3",
 		"ibrand/backend": "dev-master",
 		"ibrand/laravel-active": "~2.0",
 		"ibrand/laravel-aliyun-mail": "^1.1",
@@ -26,6 +24,7 @@
 		"ibrand/laravel-miniprogram-poster": "^1.1",
 		"ibrand/laravel-shopping-cart": "^1.3",
 		"ibrand/laravel-sms": "~1.0",
+		"ibrand/laravel-ueditor": "^1.0",
 		"ibrand/setting": "~1.0",
 		"ibrand/setting-backend": "~1.0",
 		"ibrand/wechat-backend": "dev-master",
@@ -33,8 +32,10 @@
 		"jenssegers/agent": "^2.4",
 		"kalnoy/nestedset": "^4.1",
 		"laracasts/flash": "^2.0",
+		"laravel/framework": "5.5.*",
 		"laravel/homestead": "^6.6",
 		"laravel/passport": "^4.0",
+		"laravel/tinker": "~1.0",
 		"laravelcollective/html": "^5.5",
 		"lavary/laravel-menu": "~1.7",
 		"league/fractal": "^0.17.0",
@@ -120,10 +121,6 @@
 		{
 			"type": "composer",
 			"url": "https://mirrors.aliyun.com/composer/"
-		},
-		{
-			"type": "composer",
-			"url": "http://packages.chenhow.com/"
 		}
 	]
 }

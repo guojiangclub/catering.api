@@ -2,7 +2,6 @@
 
 namespace GuoJiangClub\Catering\Backend;
 
-use ElementVip\UEditor\UEditorServiceProvider;
 use GuoJiangClub\Catering\Backend\Console\BackendMenusCommand;
 use GuoJiangClub\Catering\Backend\Console\TestAutoSendCouponCommand;
 use GuoJiangClub\Catering\Backend\Console\TestCouponOverdueRemindCommand;
@@ -13,6 +12,7 @@ use GuoJiangClub\Catering\Backend\Schedule\AutoSendCoupon;
 use GuoJiangClub\Catering\Backend\Schedule\BirthdayGiftSchedule;
 use GuoJiangClub\Catering\Backend\Schedule\CouponOverdueRemind;
 use GuoJiangClub\Catering\Backend\Schedule\StatisticsResultSchedule;
+use iBrand\UEditor\UEditorServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Route;
 use Event;
