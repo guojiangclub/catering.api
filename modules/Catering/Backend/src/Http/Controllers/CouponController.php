@@ -535,7 +535,7 @@ class CouponController extends Controller
 
 			return $this->ajaxJson(true, ['status' => 'done', 'url' => '', 'type' => $type, 'title' => $title, 'cache' => $cacheName, 'prefix' => 'coupon_code_data_']);
 		} else {
-			$url_bit = route('admin.promotion.coupon.getExportData', array_merge(['page' => $page + 1, 'limit' => $limit], request()->except('page', 'limit')));
+			$url_bit = route('admin.shitang.coupon.getExportData', array_merge(['page' => $page + 1, 'limit' => $limit], request()->except('page', 'limit')));
 
 			return $this->ajaxJson(true, ['status' => 'goon', 'url' => $url_bit, 'page' => $page, 'totalPage' => $lastPage]);
 		}

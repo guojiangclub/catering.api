@@ -91,7 +91,7 @@
     {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/jquery.http.js') !!}
     {!! Html::script(env("APP_URL").'/assets/backend/libs/jquery.el/page/jquery.pages.js') !!}
     <script>
-        var postUrl = '{{route('admin.promotion.coupon.getUsers')}}';
+        var postUrl = '{{route('admin.shitang.coupon.getUsers')}}';
         var paraDiscount = {_token: _token};
 
         function getList() {

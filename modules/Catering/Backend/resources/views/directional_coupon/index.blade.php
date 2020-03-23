@@ -65,7 +65,7 @@
                                     @if(isset($item->coupon)&&$item->coupon->count()>0)
 
                                         @if(isset($item->coupon->id))
-                                            <a href="{{route('admin.promotion.coupon.edit',$item->coupon->id)}}"
+                                            <a href="{{route('admin.shitang.coupon.edit',$item->coupon->id)}}"
                                                target="_blank">
                                                 {{$item->coupon->title}}
                                                 @if(count($coupons)<=0)

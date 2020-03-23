@@ -58,32 +58,6 @@
                                   <td>{{$item->title}}</td>
                                   <td>{{number_format($item->payment_amount / 100, 2, ".", "")}}</td>
                                   <td>{{number_format($item->amount / 100, 2, ".", "")}}</td>
-                                  {{--<td>
-                                      @if($item->open_point&&$item->point>0)
-                                          赠积分:{{$item->point}}
-                                      @else
-                                          否
-                                      @endif
-                                  </td>--}}
-                                    {{--<td>
-                                        {{$item->open_coupon?'':'否'}}
-                                        @if($item->open_coupon)
-                                         @if(isset($item->gift)&&count($item->gift)>0)
-                                            @foreach($item->gift as $ck=>$citem)
-                                                @if(isset($citem->coupon->id))
-                                                <a href="{{route('admin.promotion.coupon.edit',$citem->coupon->id)}}" target="_blank"> {{$citem->coupon->title}}</a>
-                                                        @if(count($coupons)<=0)
-                                                            (已过期)
-                                                        @elseif(!in_array($citem->coupon->id,$coupons))
-                                                            (已过期)
-                                                        @endif
-                                                {{$citem->num}}张<br>
-                                                @endif
-                                            @endforeach
-                                          @endif
-                                        @endif
-                                    </td>
-                                    <td>{{$item->sort}}</td>--}}
 
                                     <td>
                                       <a class="btn btn-xs btn-primary"

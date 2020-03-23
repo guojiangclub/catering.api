@@ -13,7 +13,7 @@
 
 
 @section('body')
-    {!! Form::open( [ 'url' => [route('admin.promotion.coupon.createCouponCode')], 'method' => 'POST', 'id' => 'create-code-form','class'=>'form-horizontal'] ) !!}
+    {!! Form::open( [ 'url' => [route('admin.shitang.coupon.createCouponCode')], 'method' => 'POST', 'id' => 'create-code-form','class'=>'form-horizontal'] ) !!}
     <div class="row">
         <div class="col-md-12">
             <label class="col-sm-2 control-label">生成数量：</label>
@@ -29,7 +29,7 @@
             <div class="col-sm-9">
                 <button type="button" class="btn btn-primary export-goods" data-toggle="modal-filter"
                         data-target="#download_modal" data-backdrop="static" data-keyboard="false"
-                        data-link="{{route('admin.promotion.coupon.getExportData',['type'=>'xls','discount_id'=>$discount_id])}}" id="coupon_export"
+                        data-link="{{route('admin.shitang.coupon.getExportData',['type'=>'xls','discount_id'=>$discount_id])}}" id="coupon_export"
                         data-url="{{route('admin.export.index',['toggle'=>'coupon_export'])}}"
                         data-type="xls"
                 >导出已生成的优惠码
@@ -83,12 +83,6 @@
             var $this = $(this),
                     href = $this.attr('href'),
                     modalUrl = $(this).data('url');
-
-            {{--var url = '{{route('admin.promotion.coupon.getExportData')}}';--}}
-            {{--var type = $(this).data('type');--}}
-
-            {{--url = url + '?type=' + type;--}}
-            {{--$(this).data('link', url);--}}
 
             if (modalUrl) {
                 var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, '')));

@@ -250,7 +250,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">*赠送优惠券:</label>
                         <div class="col-sm-8">
-                            <a href="{{route('admin.promotion.coupon.edit',$gift->coupon->id)}}" target="_blank">
+                            <a href="{{route('admin.shitang.coupon.edit',$gift->coupon->id)}}" target="_blank">
                                 {{ $gift->coupon->title }}
                             </a>
                         </div>

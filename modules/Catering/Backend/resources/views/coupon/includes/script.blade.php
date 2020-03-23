@@ -51,7 +51,7 @@
     }
 
     function getSelectedUsers(ids) {
-        $.post('{{route('admin.promotion.coupon.getSelectedUsersByID')}}',
+        $.post('{{route('admin.shitang.coupon.getSelectedUsersByID')}}',
                 {
                     _token:_token,
                     ids:ids
