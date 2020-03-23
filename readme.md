@@ -11,7 +11,7 @@ git clone git@gitlab.guojiang.club:guojiangclub/catering.api.git
 
 composer install
 
-cp .env.example .env    # 务必配置好数据库信息
+cp .env.example .env    # 请配置好数据库，APP_URL等配置项
 
 php artisan vendor:publish --all
  

@@ -131,7 +131,6 @@ class BalanceController extends Controller
     }
 
     /**
-     * 提现记录列表(因余额与分销佣金账户分开，此接口暂停,移到 ElementVip\Distribution\Server\Http\Controllers\CashController)
      *
      * @return \Dingo\Api\Http\Response
      */
