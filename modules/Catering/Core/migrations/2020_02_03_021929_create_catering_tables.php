@@ -110,11 +110,13 @@ class CreateCateringTables extends Migration
 		if (!Schema::hasTable($prefix . 'gift_coupon_receive')) {
 			Schema::create($prefix . 'gift_coupon_receive', function (Blueprint $table) {
 				$table->increments('id');
-				$table->string('origin_type');
-				$table->integer('origin_id');
+                $table->string('type')->nullable();
+				$table->string('origin_type')->nullable();
+				$table->integer('origin_id')->nullable();
 				$table->integer('user_id');
-				$table->integer('discount_id');
-				$table->integer('coupon_id');
+				$table->integer('discount_id')->nullable();
+				$table->integer('coupon_id')->nullable();
+				$table->integer('gift_coupon_id')->nullable();
 				$table->timestamps();
 			});
 		}
