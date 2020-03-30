@@ -331,7 +331,9 @@ class CommodityController extends Controller
                                      , 'data'       => $input]);
         } catch (\Exception $exception) {
             DB::rollBack();
-            \Log::info($exception);
+
+            \Log::info($exception->getMessage());
+            \Log::info($exception->getTraceAsString());
 
             return $this->ajaxJson(false, [], 404, '保存失败');
         }
