@@ -12,7 +12,7 @@
 return [
 
 	'database' => [
-		'prefix' => 'ibrand_',
+        'prefix' => env('APP_DB_PREFIX', 'ibrand_'),
 	],
 
 	/*
