@@ -303,13 +303,8 @@ class GoodsController extends Controller
         $skuPhoto = collect();
 
         if ($goods AND count($products = $goods->products()->with('photo')->get())) {
-            $grouped = $goods->specificationValue->groupBy('spec_id');
-
-            //秒杀活动
-
-            $seckill = $this->seckillItemRepository->getSeckillItemByGoodsID($id);
-
-            $singleDiscount = $this->discountService->getSingleDiscountByGoods($goods);
+            $grouped        = $goods->specificationValue->groupBy('spec_id');
+            $singleDiscount = null;
 
             foreach ($products as $key => $val) {
                 $specArray = $val->specID;
@@ -318,11 +313,7 @@ class GoodsController extends Controller
                 $spec_id                   = implode('-', $specArray);
                 $stores[$spec_id]['id']    = $val->id;
                 $stores[$spec_id]['store'] = $val->is_show == 1 ? $val->store_nums : 0;
-                if ($seckill And $seckill->init_status == SeckillItem::ING) {
-                    $stores[$spec_id]['price'] = $seckill->seckill_price;
-                } else {
-                    $stores[$spec_id]['price'] = $this->discountService->getProductPriceFromSingleDiscount($val, $singleDiscount);
-                }
+                $stores[$spec_id]['price'] = $this->discountService->getProductPriceFromSingleDiscount($val, $singleDiscount);
 
                 $stores[$spec_id]['sku']          = $val->sku;
                 $stores[$spec_id]['ids']          = $val->specID;
@@ -336,21 +327,12 @@ class GoodsController extends Controller
                 }
             }
 
-            /*  $filtered = $grouped->filter(function ($value, $key) {
-                  return $key < 2;
-              })->all();
-
-              if (count($filtered) > 0) {
-                  $grouped = $grouped->sortByDesc(function ($item, $key) {
-                      return $key;
-                  });
-              }*/
-
             $i = 1;
             foreach ($grouped as $key => $item) {
 
                 $keys = $grouped->keys()->toArray();
-                if (in_array(2, $keys)) {   //如果有颜色规格，因为颜色ID=2，为了保证 颜色排前面，需要这样处理sort
+                if (in_array(2, $keys)) {
+                    //如果有颜色规格，因为颜色ID=2，为了保证 颜色排前面，需要这样处理sort
                     $sort = $key == 1 ? $key + 2 : $key;
                 } else {
                     $sort = $key;
@@ -416,114 +398,11 @@ class GoodsController extends Controller
             }
         }
 
-        return $this->api([
+        return $this->success([
             'specs'  => $specs,
             'stores' => $stores,
         ]);
     }
-
-//    public function getStock($id)
-//    {
-//        $spec_list = array();
-//        $default_list = array();
-//        /*$id=request('goods_id');*/
-//
-//        /*$product=$this->productRepository->findWhere(['goods_id'=>$id]);*/
-//        $product = Product::where('goods_id', $id)->get();
-//        //return $product;
-//        /*$tsts=[];
-//        $default_product_all = $product->filter(function($value, $key){
-//            \Log::info('循环进来了吗');
-//            $tsts[]=$key;
-//            return $key->store_nums > 0;
-//        });*/
-//        $default_product_all = collect();
-//        foreach ($product as $item) {
-//            if ($item->store_nums > 0) {
-//                $default_product_all->push($item);
-//            }
-//        }
-//        $default_product_all = $default_product_all->first();
-//        if (count($default_product_all)) {
-//            //获取默认选中规格
-//            $pect_def = json_decode($default_product_all['spec_array']);
-//            if (!empty($default_product_all->sku)) {
-//                /* $photo_url = $default_product_all->photo->url;*/
-//                $photo_url = '';
-//            } else {
-//                $photo_url = '';
-//            }
-//            if ($default_product_all->is_show == 1) {
-//                $default_list[0][$pect_def[0]->value] = [
-//                    'store_nums' => $default_product_all->store_nums,
-//                    'value' => $pect_def[1]->value,
-//                    'id' => $default_product_all->id,
-//                    'sku' => $default_product_all->sku,
-//                    'is_show' => $default_product_all->is_show,
-//                    'sell_price' => $default_product_all->sell_price,
-//                    'photo_url' => $photo_url
-//                ];
-//            }
-//
-//
-//            foreach ($product as $item) {
-//                /*if ($item->store_nums > 0) {*/
-//                $spec = json_decode($item->spec_array);
-//                if (!empty($item->sku)) {
-//                    $photo_url = '';
-//                } else {
-//                    $photo_url = '';
-//                }
-//
-//                $spec_list[$spec[0]->value][] =
-//                    [
-//                        'store_nums' => $item->store_nums,
-//                        'value' => $spec[1]->value,
-//                        'id' => $item->id,
-//                        'sku' => $item->sku,
-//                        'sell_price' => $item->sell_price,
-//                        'is_show' => $item->is_show,
-//                        'photo_url' => $photo_url
-//
-//                    ];
-//
-//
-//                if ($item->photo) {
-//                    $photo_url = $item->photo->url;
-//                } else {
-//                    $photo_url = '';
-//                }
-//
-//                $spec_list[$spec[1]->value][] =
-//                    [
-//                        'store_nums' => $item->store_nums,
-//                        'value' => $spec[0]->value,
-//                        'id' => $item->id,
-//                        'is_show' => $item->is_show,
-//                        'sku' => $item->sku,
-//                        'sell_price' => $item->sell_price,
-//                        'photo_url' => $photo_url
-//
-//                    ];
-//                /*}*/
-//            }
-//
-//
-//        }
-//        /*return response()->json([
-//            'error' => '',
-//            'status' => true,
-//            'data' => [
-//                'spec_list' => $spec_list,
-//                'default_list'=>$default_list
-//            ],
-//            'error_code' => 0
-//        ]);*/
-//        return $this->api([
-//            'spec_list' => $spec_list,
-//            'default_list' => $default_list
-//        ]);
-//    }
 
     public function getComments($id)
     {
