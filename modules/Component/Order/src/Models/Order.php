@@ -73,8 +73,15 @@ class Order extends Model implements DiscountSubjectContract, PaymentsSubjectCon
 
 		$this->adjustments()->saveMany($this->getAdjustments());
 
+        $this->comments()->saveMany($this->comments);
+
 		return $order;
 	}
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 	public function user()
 	{
@@ -89,11 +96,6 @@ class Order extends Model implements DiscountSubjectContract, PaymentsSubjectCon
 	public function adjustments()
 	{
 		return $this->hasMany(Adjustment::class);
-	}
-
-	public function specialTypes()
-	{
-		return $this->hasMany(SpecialType::class);
 	}
 
 	public function payments()
@@ -435,4 +437,9 @@ class Order extends Model implements DiscountSubjectContract, PaymentsSubjectCon
 	{
 		return $this->pay_status;
 	}
+
+    public function countComments()
+    {
+        return $this->comments->count();
+    }
 }
