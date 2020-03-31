@@ -21,6 +21,12 @@ $router->group(config('ibrand.shitang-api.routeAuthAttributes'), function($route
     $router->get('users/point', 'WalletController@myPoint')->name('api.user.point');
 
     $router->get('store/goods/purchase/{goods_id}', 'GoodsController@goodsPurchase')->name('api.store.goods.purchase');
+
+    /*************************** 我的收藏相关路由 ********************/
+    $router->get('favorite/', 'FavoriteController@getFav')->name('api.favorite');
+    $router->post('favorite/store', 'FavoriteController@storeFav')->name('api.favorite.store');
+    $router->post('favorite/delFavs', 'FavoriteController@delFavs')->name('api.favorite.delFavs');
+    $router->get('favorite/isfav', 'FavoriteController@getIsFav')->name('api.favorite.isFav');
 });
 
 $router->group(['prefix' => 'shitang'], function () use ($router) {
