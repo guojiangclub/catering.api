@@ -288,9 +288,9 @@ class GoodsController extends Controller
             'attributes'     => $goods->attr,
             'singleDiscount' => null,
             'suit'           => null,
-            'seckill'        => [],
-            'groupon'        => [],
-            'multiGroupon'   => [],
+            'seckill'        => null,
+            'groupon'        => null,
+            'multiGroupon'   => null,
             'discounts'      => null,
         ]);
     }
