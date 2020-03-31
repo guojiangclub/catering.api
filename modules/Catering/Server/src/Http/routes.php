@@ -7,6 +7,11 @@ $router->get('system/init', 'SystemSettingController@init')->name('api.system.in
 $router->get('users/balance/schemes', 'BalanceController@getSchemes')->name('api.user.balance.schemes');
 
 $router->get('store/list', 'GoodsController@index')->name('api.store.list');
+$router->get('store/detail/{id}', 'GoodsController@show')->name('api.store.detail');
+$router->get('store/detail/{id}/stock', 'GoodsController@getStock')->name('api.store.detail.stock');
+$router->get('store/detail/{id}/comments', 'GoodsController@getComments')->name('api.store.detail.comments');
+$router->get('store/detail/{id}/discount', 'DiscountController@getDiscountByGoods')->name('api.store.detail.discount');
+$router->get('store/category/list', 'CategoryController@index')->name('api.store.category.list');
 
 $router->group(config('ibrand.shitang-api.routeAuthAttributes'), function($router){
     $router->get('users/balance/sum', 'BalanceController@sum')->name('api.user.balance.sum');
@@ -14,6 +19,8 @@ $router->group(config('ibrand.shitang-api.routeAuthAttributes'), function($route
 
     $router->get('users/point/list', 'UserController@pointList')->name('api.user.point.list');
     $router->get('users/point', 'WalletController@myPoint')->name('api.user.point');
+
+    $router->get('store/goods/purchase/{goods_id}', 'GoodsController@goodsPurchase')->name('api.store.goods.purchase');
 });
 
 $router->group(['prefix' => 'shitang'], function () use ($router) {

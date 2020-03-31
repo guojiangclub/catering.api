@@ -276,67 +276,23 @@ class GoodsController extends Controller
 
     public function show($id)
     {
-        $goods = $this->goodsRepository->find($id);
-
+        $goods                  = $this->goodsRepository->find($id);
         $ruleGoods              = [];
         $ruleGoods['spu']       = [];
-        $percentageGroup        = [];
         $goods->insourced_price = -1;
-
-        //$goods->single_price = $goods->products->min('sell_price');
-        $goods->single_price = $goods->min_price;
-
-        /*if (in_array($goods->id, $ruleGoods['spu'])) {
-            $goods->insourced_price = $goods->getRolePrice($percentageGroup);
-        }*/
-
-        $singleDiscount = $this->discountService->getSingleDiscountByGoods($goods);
-        //$singleDiscount = '';
-        //套餐，暂无优化空间
-        $suit = $this->suitRepository->getSuitByGoodsId($id);
-
+        $goods->single_price    = $goods->min_price;
         //限购
         $goods->user_limit = 0;
-        $goods_limit       = $this->goodsLimit->findWhere(['goods_id' => $id, 'activity' => 1])->first();
-        if ($goods_limit) {
-            $start_at = strtotime($goods_limit->starts_at);
-            $end_at   = strtotime($goods_limit->ends_at);
-            if (time() >= $start_at && time() <= $end_at) {
-                $goods->user_limit = $goods_limit->quantity;
-            }
-        }
 
-        //秒杀活动, 获取所有有效活动，返回未开始和进行中的秒杀商品
-        $seckillItem = [];
-
-        if ($seckillItem = $this->seckillItemRepository->getSeckillItemByGoodsID($id)) {
-            $goods->server_time = Carbon::now()->toDateTimeString();
-            if ($seckillItem->init_status == SeckillItem::ING) {
-                $goods->user_limit    = $seckillItem->limit;
-                $goods->seckill_price = $seckillItem->seckill_price;
-            }
-        }
-
-        //拼团活动, 获取所有有效活动，返回未开始和进行中的拼团商品
-        $grouponItem = [];
-        //小拼团
-        $multiGroupon = [];
-        //获取优惠折扣
-        $discounts = $this->discountService->getDiscountsByGoods($goods);
-        if (!$discounts || count($discounts) == 0) {
-            $result = null;
-        } else {
-            $result['discounts'] = collect_to_array($discounts->where('coupon_based', 0));
-            $result['coupons']   = collect_to_array($discounts->where('coupon_based', 1));
-        }
-
-        return $this->response()->item($goods, new GoodsTransformer())->setMeta(['attributes'     => $goods->attr,
-                                                                                 'singleDiscount' => $singleDiscount,
-                                                                                 'suit'           => $suit,
-                                                                                 'seckill'        => $seckillItem,
-                                                                                 'groupon'        => $grouponItem,
-                                                                                 'multiGroupon'   => $multiGroupon,
-                                                                                 'discounts'      => $result]);
+        return $this->response()->item($goods, new GoodsTransformer())->setMeta([
+            'attributes'     => $goods->attr,
+            'singleDiscount' => null,
+            'suit'           => null,
+            'seckill'        => [],
+            'groupon'        => [],
+            'multiGroupon'   => [],
+            'discounts'      => null,
+        ]);
     }
 
     public function getStock($id)
@@ -651,9 +607,6 @@ class GoodsController extends Controller
         $replace_url = settings('store_img_replace_url') ? settings('store_img_replace_url') : url('/');
         if (settings('store_img_cdn_status') AND $url = settings('store_img_cdn_url')) {
             $value = str_replace('http://' . $replace_url, $url, $value);
-            /* return preg_replace_callback('/<img.+src=\"?(.+\.(jpg|gif|bmp|bnp|png))\"?.+>/i', function ($r) use ($url) {
-                 return (preg_replace("/(http:\/\/|https:\/\/)([^\/]+)/i", $url, $r[0]));
-             }, $value);*/
         }
 
         return $value;
@@ -662,44 +615,10 @@ class GoodsController extends Controller
     public function goodsPurchase($goods_id)
     {
         if (!isset(request()->user()->id)) {
-            return $this->api([], false, 500, '您还没有登录');
+            return $this->failed('您还没有登录');
         }
 
-        //秒杀判断
-        $seckillItem = $this->seckillItemRepository->getSeckillItemByGoodsID($goods_id);
-        if ($seckillItem And $seckillItem->init_status == SeckillItem::ING) {
-            if ($seckillItem->limit > 0) {
-                $count = $this->seckillItemRepository->getUserSeckillGoodsCountByItemId($seckillItem->id, request()->user()->id);
-                $limit = $count > $seckillItem->limit ? 0 : $seckillItem->limit - $count;
-
-                return $this->api(['user_limit' => $limit], true, 200, '');
-            }
-
-            return $this->api([], true, 200, '');
-        }
-
-        $goods_limit = $this->goodsLimit->findWhere(['goods_id' => $goods_id, 'activity' => 1])->first();
-        $limit       = [];
-        if (!$goods_limit) {
-
-            return $this->api($limit, true, 200, '');
-        }
-
-        $start_at = strtotime($goods_limit->starts_at);
-        $end_at   = strtotime($goods_limit->ends_at);
-        if (time() < $start_at || time() > $end_at) {
-
-            return $this->api($limit, true, 200, '');
-        }
-
-        $check = $this->goodsUserLimit->findWhere(['user_id' => request()->user()->id, 'goods_id' => $goods_id])->first();
-        if ($check) {
-            $goods_limit->user_limit = $goods_limit->quantity - $check->buy_nums;
-        } else {
-            $goods_limit->user_limit = $goods_limit->quantity;
-        }
-
-        return $this->api($goods_limit, true, 200, '');
+        return $this->success([]);
     }
 
     /**
