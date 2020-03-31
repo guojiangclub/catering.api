@@ -106,7 +106,7 @@ class Order extends Model implements DiscountSubjectContract, PaymentsSubjectCon
 
 	public function coupon()
 	{
-		return $this->belongsToMany('GuoJiangClub\Catering\Component\Discount\Models\Coupon', 'el_order_adjustment', 'order_id', 'origin_id');
+		return $this->belongsToMany('GuoJiangClub\Catering\Component\Discount\Models\Coupon', config('ibrand.app.database.prefix', 'ibrand_').'order_adjustment', 'order_id', 'origin_id');
 	}
 
 	public function getCoupon()

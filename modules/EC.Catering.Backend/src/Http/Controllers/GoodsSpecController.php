@@ -92,7 +92,7 @@ class GoodsSpecController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$result = DB::table('el_goods_spec_relation')->where('spec_id', $id)->get();
+		$result = DB::table(config('ibrand.app.database.prefix', 'ibrand_').'goods_spec_relation')->where('spec_id', $id)->get();
 		if (count($result) OR $id == 2) {
 			return $this->ajaxJson(false);
 		} else {
@@ -189,7 +189,7 @@ class GoodsSpecController extends Controller
 	public function delSpecValue()
 	{
 		$id     = request('id');
-		$result = DB::table('el_goods_spec_relation')->where('spec_value_id', $id)->get();
+		$result = DB::table(config('ibrand.app.database.prefix', 'ibrand_').'goods_spec_relation')->where('spec_value_id', $id)->get();
 		if (count($result)) {
 			return $this->ajaxJson(false);
 		} else {

@@ -168,7 +168,7 @@ class OrderRepository extends BaseRepository
     {
         $shipping = null;
         if ($order->status < 6 AND 2 < $order->status AND $shipping = $order->shipping()->first()) {
-            $ShippingMethod = ShippingMethod::find($shipping->method_id);
+            $ShippingMethod        = ShippingMethod::find($shipping->method_id);
             $shipping->method_name = $ShippingMethod->name;
         }
 
@@ -200,8 +200,8 @@ class OrderRepository extends BaseRepository
     public function orderSearch($conditions = [])
     {
 
-        $con = isset($conditions['conditions']) ? $conditions['conditions'] : '';
-        $value = isset($conditions['search']) ? $conditions['search'] : '';
+        $con    = isset($conditions['conditions']) ? $conditions['conditions'] : '';
+        $value  = isset($conditions['search']) ? $conditions['search'] : '';
         $status = isset($conditions['status']) ? $conditions['status'] : 0;
 
         return $this->getOrdersPaginated(1, $status, $con, $value);
@@ -221,10 +221,10 @@ class OrderRepository extends BaseRepository
 
     public function updateDeliveryStatus($order_id, $status, $send_time, $shipping_id)
     {
-        return $this->update(['status' => $status,
-            'distribution_status' => 1,
-            'send_time' => $send_time,
-            'distribution' => $shipping_id,
+        return $this->update(['status'              => $status,
+                              'distribution_status' => 1,
+                              'send_time'           => $send_time,
+                              'distribution'        => $shipping_id,
         ], $order_id);
     }
 
@@ -267,7 +267,7 @@ class OrderRepository extends BaseRepository
             }
             $order_ids = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                 ->whereIn('item_id', $products)->pluck('order_id')->toArray();
-            $data = $data->whereIn('id', $order_ids);
+            $data      = $data->whereIn('id', $order_ids);
         }
 
         if (is_array($ids = request('ids'))) {
@@ -286,7 +286,7 @@ class OrderRepository extends BaseRepository
     {
         $adjustments = $order->adjustments()->get();
         foreach ($adjustments as $item) {
-            $discount = Coupon::find($item->origin_id);
+            $discount          = Coupon::find($item->origin_id);
             $item->coupon_code = isset($discount->code) ? $discount->code : '';
         }
 
@@ -296,7 +296,7 @@ class OrderRepository extends BaseRepository
     public function getOrderPoints($orderItems)
     {
         $item_id = [];
-        $point = [];
+        $point   = [];
         foreach ($orderItems as $item) {
             $item_id[] = $item->id;
         }
@@ -329,7 +329,7 @@ class OrderRepository extends BaseRepository
     /**
      * 20170417
      * @param       $where
-     * @param int $limit
+     * @param int   $limit
      * @param array $time
      *
      * @return mixed
@@ -399,19 +399,19 @@ class OrderRepository extends BaseRepository
         /*付款方式*/
         if (isset($more['pay_method'])) {
             $order_ids_pay = Payment::where('channel', $more['pay_method'])->pluck('order_id')->toArray();
-            $data = $data->whereIn('id', $order_ids_pay);
+            $data          = $data->whereIn('id', $order_ids_pay);
         }
 
         if (isset($where['spu'])) {
             list($operate, $va) = $where['spu'];
-            $products = DB::table('el_goods')
+            $products          = DB::table(config('ibrand.app.database.prefix', 'ibrand_') . 'goods')
                 ->where('goods_no', $operate, $va)
-                ->join('el_goods_product', 'el_goods.id', '=', 'el_goods_product.goods_id')
-                ->pluck('el_goods_product.id')->toArray();
+                ->join(config('ibrand.app.database.prefix', 'ibrand_') . 'goods_product', config('ibrand.app.database.prefix', 'ibrand_') . 'goods.id', '=', 'el_goods_product.goods_id')
+                ->pluck(config('ibrand.app.database.prefix', 'ibrand_') . 'goods_product.id')->toArray();
             $order_ids_product = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                 ->whereIn('item_id', $products)->pluck('order_id')->toArray();
 
-            $goods = DB::table('el_goods')
+            $goods           = DB::table(config('ibrand.app.database.prefix', 'ibrand_') . 'goods')
                 ->where('goods_no', $operate, $va)
                 ->pluck('id')->toArray();
             $order_ids_goods = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Goods')
@@ -429,7 +429,7 @@ class OrderRepository extends BaseRepository
             }
             $order_ids = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                 ->whereIn('item_id', $products)->pluck('order_id')->toArray();
-            $data = $data->whereIn('id', $order_ids);
+            $data      = $data->whereIn('id', $order_ids);
         }
 
         if (is_array($ids = request('ids'))) {
@@ -437,7 +437,6 @@ class OrderRepository extends BaseRepository
         }
 
         $data = $data->with('payment', 'adjustments', 'user', 'refunds', 'grouponUser')->orderBy('created_at', 'desc');
-
 
         if ($limit == 0) {
             return $data->get();
@@ -448,20 +447,22 @@ class OrderRepository extends BaseRepository
 
     /**
      * 获取拆分订单数据
-     * @param $where
-     * @param int $limit
+     *
+     * @param       $where
+     * @param int   $limit
      * @param array $time
      * @param array $more
      * @param array $pay_time
+     *
      * @return array
      */
     public function getSplitOrdersData($where, $limit = 50, $time = [], $more = [], $pay_time = [])
     {
 
         $users = $this->getSplitOrderUser($more, $limit);
-        $data = collect();
+        $data  = collect();
         if ($users->total() > 0) {
-            $tmp = $users->toArray();
+            $tmp      = $users->toArray();
             $users_id = array_column($tmp['data'], 'user_id');
 
             $data = Order::where(function ($query) use ($where, $time, $pay_time, $more, $users_id) {
@@ -527,19 +528,19 @@ class OrderRepository extends BaseRepository
             /*付款方式*/
             if (isset($more['pay_method'])) {
                 $order_ids_pay = Payment::where('channel', $more['pay_method'])->pluck('order_id')->toArray();
-                $data = $data->whereIn('id', $order_ids_pay);
+                $data          = $data->whereIn('id', $order_ids_pay);
             }
 
             if (isset($where['spu'])) {
                 list($operate, $va) = $where['spu'];
-                $products = DB::table('el_goods')
+                $products          = DB::table(config('ibrand.app.database.prefix', 'ibrand_') . 'goods')
                     ->where('goods_no', $operate, $va)
-                    ->join('el_goods_product', 'el_goods.id', '=', 'el_goods_product.goods_id')
-                    ->pluck('el_goods_product.id')->toArray();
+                    ->join(config('ibrand.app.database.prefix', 'ibrand_') . 'goods_product', 'el_goods.id', '=', 'el_goods_product.goods_id')
+                    ->pluck(config('ibrand.app.database.prefix', 'ibrand_') . 'goods_product.id')->toArray();
                 $order_ids_product = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                     ->whereIn('item_id', $products)->pluck('order_id')->toArray();
 
-                $goods = DB::table('el_goods')
+                $goods           = DB::table(config('ibrand.app.database.prefix', 'ibrand_') . 'goods')
                     ->where('goods_no', $operate, $va)
                     ->pluck('id')->toArray();
                 $order_ids_goods = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Goods')
@@ -557,9 +558,8 @@ class OrderRepository extends BaseRepository
                 }
                 $order_ids = OrderItem::where('type', 'GuoJiangClub\Catering\Component\Product\Models\Product')
                     ->whereIn('item_id', $products)->pluck('order_id')->toArray();
-                $data = $data->whereIn('id', $order_ids);
+                $data      = $data->whereIn('id', $order_ids);
             }
-
 
 //            $data = $data->with('payment', 'adjustments')->orderBy('user_id')->orderBy('status', 'asc')->get();
             $data = $data->with('payment', 'adjustments', 'user', 'refunds', 'grouponUser')->orderBy('created_at', 'desc')->get();
@@ -570,39 +570,41 @@ class OrderRepository extends BaseRepository
 
     /**
      * 拆分订单，按照用户分页
+     *
      * @param $more
      * @param $limit
+     *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     protected function getSplitOrderUser($more, $limit)
     {
-        $ids = request('ids');
+        $ids    = request('ids');
+        $prefix = config('ibrand.app.database.prefix', 'ibrand_');
 
         if (isset($more['supplier']) AND $more['supplier']) {
             if ($ids) {
-                $users = DB::table('el_order')
-                    ->join('el_order_item', 'el_order.id', '=', 'el_order_item.order_id')
-                    ->select('el_order.user_id')
-                    ->where('el_order.status', 2)
-                    ->where('el_order.pay_status', 1)
-                    ->whereIn('el_order_item.supplier_id', $more['supplier'])
-                    ->whereIn('el_order.user_id', $ids)
-                    ->groupBy('el_order.user_id')
-                    ->orderBy('el_order.user_id', 'desc')->paginate($limit);
+                $users = DB::table($prefix . 'order')
+                    ->join($prefix . 'order_item', $prefix . 'order.id', '=', $prefix . 'order_item.order_id')
+                    ->select($prefix . 'order.user_id')
+                    ->where($prefix . 'order.status', 2)
+                    ->where($prefix . 'order.pay_status', 1)
+                    ->whereIn($prefix . 'order_item.supplier_id', $more['supplier'])
+                    ->whereIn($prefix . 'order.user_id', $ids)
+                    ->groupBy($prefix . 'order.user_id')
+                    ->orderBy($prefix . 'order.user_id', 'desc')->paginate($limit);
             } else {
-                $users = DB::table('el_order')
-                    ->join('el_order_item', 'el_order.id', '=', 'el_order_item.order_id')
-                    ->select('el_order.user_id')
-                    ->where('el_order.status', 2)
-                    ->where('el_order.pay_status', 1)
-                    ->whereIn('el_order_item.supplier_id', $more['supplier'])
-                    ->groupBy('el_order.user_id')
-                    ->orderBy('el_order.user_id', 'desc')->paginate($limit);
+                $users = DB::table($prefix . 'order')
+                    ->join($prefix . 'order_item', $prefix . 'order.id', '=', $prefix . 'order_item.order_id')
+                    ->select($prefix . 'order.user_id')
+                    ->where($prefix . 'order.status', 2)
+                    ->where($prefix . 'order.pay_status', 1)
+                    ->whereIn($prefix . 'order_item.supplier_id', $more['supplier'])
+                    ->groupBy($prefix . 'order.user_id')
+                    ->orderBy($prefix . 'order.user_id', 'desc')->paginate($limit);
             }
-
         } else {
             if ($ids) {
-                $users = DB::table('el_order')
+                $users = DB::table($prefix . 'order')
                     ->select('user_id')
                     ->where('status', 2)
                     ->where('pay_status', 1)
@@ -610,7 +612,7 @@ class OrderRepository extends BaseRepository
                     ->groupBy('user_id')
                     ->orderBy('user_id', 'desc')->paginate($limit);
             } else {
-                $users = DB::table('el_order')
+                $users = DB::table($prefix . 'order')
                     ->select('user_id')
                     ->where('status', 2)
                     ->where('pay_status', 1)
@@ -618,6 +620,7 @@ class OrderRepository extends BaseRepository
                     ->orderBy('user_id', 'desc')->paginate($limit);
             }
         }
+
         return $users;
     }
 }

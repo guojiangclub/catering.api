@@ -50,7 +50,7 @@ class BalanceOrderRepository extends BaseRepository
 			$query->where(function ($query) use ($where) {
 				if (isset($where['mobile'])) {
 					list($operate, $va) = $where['mobile'];
-					$query->where('el_user.mobile', $operate, $va);
+					$query->where(config('ibrand.app.database.prefix', 'ibrand_').'user.mobile', $operate, $va);
 				}
 			});
 		});

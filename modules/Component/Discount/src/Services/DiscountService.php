@@ -15,7 +15,6 @@ use GuoJiangClub\Catering\Component\Discount\Contracts\DiscountSubjectContract;
 use GuoJiangClub\Catering\Component\Discount\Models\Coupon;
 use GuoJiangClub\Catering\Component\Discount\Models\Discount;
 use GuoJiangClub\Catering\Component\Discount\Models\Rule;
-use GuoJiangClub\Catering\Component\Discount\Models\SingleDiscountCondition;
 use GuoJiangClub\Catering\Component\Discount\Repositories\CouponRepository;
 use GuoJiangClub\Catering\Component\Discount\Repositories\DiscountRepository;
 use Carbon\Carbon;
@@ -280,7 +279,7 @@ class DiscountService
 
 						$discountSpu = array_merge($discountSpu, explode(',', $configuration['spu']));
 
-						$diffIds = DB::table('el_goods')
+						$diffIds = DB::table(config('ibrand.app.database.prefix', 'ibrand_').'goods')
 							->whereIn('goods_no', ['2t7d', '2t7e'])
 							->select('id')
 							->get()->pluck('id')->toArray();
@@ -296,14 +295,14 @@ class DiscountService
 					if (count($configuration['items'])) {
 						$discountCategory = array_merge($discountCategory, $configuration['items']);
 
-						$spuIds = DB::table('el_goods_category')
+						$spuIds = DB::table(config('ibrand.app.database.prefix', 'ibrand_').'goods_category')
 							->whereIn('category_id', $discountCategory)
 							->select('goods_id')
 							->distinct()->get()->pluck('goods_id')->toArray();
 
 						$discountSpu = array_merge($discountSpu, $spuIds);
 
-						$diffIds = DB::table('el_goods')
+						$diffIds = DB::table(config('ibrand.app.database.prefix', 'ibrand_').'goods')
 							->whereIn('goods_no', ['2t7d', '2t7e'])
 							->select('id')
 							->get()->pluck('id')->toArray();
@@ -426,13 +425,7 @@ class DiscountService
 	public function getSingleDiscountByGoods($goods)
 	{
 
-		/*$discounts = empty_collect_cache(self::SINGLE_DISCOUNT_CACHE, $goods->id);
-
-		if (!is_null($discounts)) {
-			return $discounts;
-		}*/
-
-		if ($goods instanceof Goods) {
+		/*if ($goods instanceof Goods) {
 			$skus = $goods->products->pluck('sku')->toArray();
 		} else {
 			$skus = [$goods->sku];
@@ -451,7 +444,7 @@ class DiscountService
 			return $discount;
 		} else { //说明该商品目前没有单品折扣
 			//empty_collect_cache([$goods->id => ''], self::SINGLE_DISCOUNT_CACHE, 30);
-		}
+		}*/
 
 		return false;
 	}

@@ -40,7 +40,7 @@ class Goods extends LaravelModel implements Transformable, DiscountItemContract
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'el_goods_category', 'goods_id', 'category_id');
+        return $this->belongsToMany(Category::class, config('ibrand.app.database.prefix', 'ibrand_') . 'goods_category', 'goods_id', 'category_id');
     }
 
     public function getCategories()
@@ -171,7 +171,7 @@ class Goods extends LaravelModel implements Transformable, DiscountItemContract
             ->get();
         foreach ($res2 as $item) {
             if ($item['is_chart'] == 1) {
-                $value          = DB::table('el_goods_attribute_value')->select('id', 'name')->where('attribute_id', $item['id'])->get();
+                $value          = DB::table(config('ibrand.app.database.prefix', 'ibrand_') . 'goods_attribute_value')->select('id', 'name')->where('attribute_id', $item['id'])->get();
                 $item['values'] = $value;
             }
         }
@@ -299,7 +299,7 @@ class Goods extends LaravelModel implements Transformable, DiscountItemContract
 
     public function specificationValue()
     {
-        return $this->belongsToMany('GuoJiangClub\Catering\Component\Product\Models\SpecsValue', 'el_goods_spec_relation', 'goods_id', 'spec_value_id')
+        return $this->belongsToMany('GuoJiangClub\Catering\Component\Product\Models\SpecsValue', config('ibrand.app.database.prefix', 'ibrand_') . 'goods_spec_relation', 'goods_id', 'spec_value_id')
             ->withPivot('spec_id', 'alias', 'img', 'sort')->withTimestamps();
     }
 

@@ -103,7 +103,7 @@ class GoodsTransformer extends BaseTransformer
         foreach ($categories as $category) {
             $cid[] = $category->id;
         }
-        $categoryGoodsIds = DB::table('el_goods_category')->whereIn('category_id', $cid)->select('goods_id')->distinct()->get()
+        $categoryGoodsIds = DB::table(config('ibrand.app.database.prefix', 'ibrand_') . 'goods_category')->whereIn('category_id', $cid)->select('goods_id')->distinct()->get()
             ->pluck('goods_id')->toArray();
         $goods            = Goods::select(['id', 'name', 'min_price', 'sell_price', 'img'])->whereIn('id', $categoryGoodsIds)->where('is_del', 0)->get();
         $goods            = $goods->shuffle()->take(6);

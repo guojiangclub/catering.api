@@ -21,7 +21,7 @@ class AutoSendCoupon extends Scheduling
 			if (!empty($rules)) {
 				$rules_collect = collect($rules)->sortBy('days');
 				$first_rule    = $rules_collect->first();
-				$orders        = DB::table('el_order')->whereIn('status', [2, 3, 4, 5])->groupBy('user_id')->orderBy('created_at', 'DESC')->get();
+				$orders        = DB::table(config('ibrand.app.database.prefix', 'ibrand_').'order')->whereIn('status', [2, 3, 4, 5])->groupBy('user_id')->orderBy('created_at', 'DESC')->get();
 				if ($orders->count() > 0) {
 					foreach ($orders as $order) {
 						$diff = round((time() - strtotime($order->created_at)) / 86400);

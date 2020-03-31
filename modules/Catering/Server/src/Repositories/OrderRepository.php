@@ -58,7 +58,7 @@ class OrderRepository extends BaseRepository
 			$data->whereHas('user', function ($query) use ($where) {
 				$query->where(function ($query) use ($where) {
 					list($operate, $va) = $where['mobile'];
-					$query->where('el_user.mobile', $operate, $va);
+					$query->where(config('ibrand.app.database.prefix', 'ibrand_').'user.mobile', $operate, $va);
 				});
 			});
 		}
@@ -66,7 +66,7 @@ class OrderRepository extends BaseRepository
 		if (isset($where['balance']) && $where['balance']) {
 			$data->whereHas('payments', function ($query) use ($where) {
 				$query->where(function ($query) {
-					$query->where('el_payment.channel', Payment::TYPE_BALANCE)->where('el_payment.status', Payment::STATUS_COMPLETED);
+					$query->where(config('ibrand.app.database.prefix', 'ibrand_').'payment.channel', Payment::TYPE_BALANCE)->where(config('ibrand.app.database.prefix', 'ibrand_').'payment.status', Payment::STATUS_COMPLETED);
 				});
 			});
 		}
