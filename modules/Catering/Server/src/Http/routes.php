@@ -22,11 +22,29 @@ $router->group(config('ibrand.shitang-api.routeAuthAttributes'), function($route
 
     $router->get('store/goods/purchase/{goods_id}', 'GoodsController@goodsPurchase')->name('api.store.goods.purchase');
 
+    /************************ 收货地址相关路由 ************************/
+
+    $router->get('address', 'AddressController@getAddress')->name('api.address.list');
+    $router->post('address/create', 'AddressController@createNew')->name('api.address.create');
+    $router->put('address/update', 'AddressController@updateAddress')->name('api.address.update');
+    $router->get('address/{id}', 'AddressController@getAddressDetails')->where('id', '[0-9]+')->name('api.address');
+    $router->delete('address/{id}', 'AddressController@deleteAddress')->name('api.address.delete');
+    $router->get('address/default', 'AddressController@getDefaultAddress')->name('api.address.default');
+
     /*************************** 我的收藏相关路由 ********************/
     $router->get('favorite/', 'FavoriteController@getFav')->name('api.favorite');
     $router->post('favorite/store', 'FavoriteController@storeFav')->name('api.favorite.store');
     $router->post('favorite/delFavs', 'FavoriteController@delFavs')->name('api.favorite.delFavs');
     $router->get('favorite/isfav', 'FavoriteController@getIsFav')->name('api.favorite.isFav');
+
+    $router->post('shopping/order/checkout/point', 'ShoppingController@checkoutPoint')->name('api.shopping.order.checkout.point');
+    $router->post('shopping/order/confirm/point', 'ShoppingController@confirmPoint')->name('api.shopping.order.confirm');
+    $router->post('shopping/order/cancel', 'ShoppingController@cancel')->name('api.shopping.order.cancel');
+    $router->post('shopping/order/received', 'ShoppingController@received')->name('api.shopping.order.received');
+    $router->post('shopping/order/delete', 'ShoppingController@delete')->name('api.shopping.order.delete');
+    $router->post('shopping/order/review', 'ShoppingController@review')->name('api.shopping.order.review');
+    $router->get('shopping/order/extraInfo', 'ShoppingController@extraInfo')->name('api.shopping.order.extraInfo');
+    $router->get('order/point/list', 'OrderController@getPointOrders')->name('api.order.point.list');
 });
 
 $router->group(['prefix' => 'shitang'], function () use ($router) {
