@@ -142,7 +142,7 @@ class ShoppingController extends Controller
                 'invoice_status' => settings('invoice_status'),
             ], true);
         } catch (\Exception $exception) {
-            return $this->api([], false, 400, $exception->getMessage());
+            return $this->failed($exception->getMessage());
         }
     }
 
