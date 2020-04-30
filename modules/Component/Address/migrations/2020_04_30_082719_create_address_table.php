@@ -15,7 +15,7 @@ class CreateAddressTable extends Migration
     {
         $prefix = config('ibrand.app.database.prefix', 'ibrand_');
         if (!Schema::hasTable($prefix . 'address')) {
-            Schema::create($prefix . 'addresses', function (Blueprint $table) {
+            Schema::create($prefix . 'address', function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('user_id');
                 $table->string('accept_name');
