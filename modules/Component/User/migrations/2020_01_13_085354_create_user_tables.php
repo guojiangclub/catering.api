@@ -28,7 +28,7 @@ class CreateUserTables extends Migration
 				$table->boolean('confirmed')->default(false);
 				$table->string('sex')->nullable()->comment('性别');
 				$table->string('avatar')->nullable()->comment('头像');
-				$table->float('integral')->nullable()->default(0)->comment('用户总积分');
+				$table->integer('integral')->nullable()->default(0)->comment('用户总积分');
 				$table->integer('current_exp')->nullable()->default(0);
 				$table->integer('available_integral')->nullable()->default(0)->comment('用户现有积分');
 				$table->decimal('discount', 8, 2)->nullable()->comment('用户余额');
