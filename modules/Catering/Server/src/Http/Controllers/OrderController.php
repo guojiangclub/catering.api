@@ -60,4 +60,10 @@ class OrderController extends Controller
 
         return $this->response()->paginator($order, new OrderTransformer());
     }
+
+    public function getOrderDetails($orderno)
+    {
+        $details = $this->orderRepository->getOrderByNo($orderno);
+        return $this->response()->item($details, new OrderTransformer());
+    }
 }

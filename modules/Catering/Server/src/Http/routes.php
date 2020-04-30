@@ -12,7 +12,7 @@ $router->get('store/detail/{id}/stock', 'GoodsController@getStock')->name('api.s
 $router->get('store/detail/{id}/comments', 'GoodsController@getComments')->name('api.store.detail.comments');
 $router->get('store/detail/{id}/discount', 'DiscountController@getDiscountByGoods')->name('api.store.detail.discount');
 $router->get('store/category/list', 'CategoryController@index')->name('api.store.category.list');
-
+$router->get('order/{order_no}', 'OrderController@getOrderDetails')->name('api.order');
 $router->group(config('ibrand.shitang-api.routeAuthAttributes'), function($router){
     $router->get('users/balance/sum', 'BalanceController@sum')->name('api.user.balance.sum');
     $router->get('users/balance/list', 'BalanceController@index')->name('api.user.balance.list');
