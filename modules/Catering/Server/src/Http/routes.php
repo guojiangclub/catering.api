@@ -44,6 +44,7 @@ $router->group(config('ibrand.shitang-api.routeAuthAttributes'), function($route
     $router->post('shopping/order/delete', 'ShoppingController@delete')->name('api.shopping.order.delete');
     $router->post('shopping/order/review', 'ShoppingController@review')->name('api.shopping.order.review');
     $router->get('shopping/order/extraInfo', 'ShoppingController@extraInfo')->name('api.shopping.order.extraInfo');
+    $router->post('shopping/order/paid', 'PaymentController@paidSuccess')->name('api.shopping.order.paid');
     $router->get('order/point/list', 'OrderController@getPointOrders')->name('api.order.point.list');
 });
 
