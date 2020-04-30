@@ -124,7 +124,7 @@ class OrderItem extends Model implements Transformable
 	{
 		/*return $this->refunds->count() > 0;
 		 是否在列表显示item*/
-		$count = $this->refunds->count();
+		/*$count = $this->refunds->count();
 		if ($count == 0) { //如果一次售后都未申请过
 			return false;
 		}
@@ -137,7 +137,7 @@ class OrderItem extends Model implements Transformable
 		) {
 			//如果申请了一次售后，并且未拒绝、未关闭
 			return true;
-		}
+		}*/
 
 		return false;
 	}
