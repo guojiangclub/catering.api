@@ -135,12 +135,11 @@ class ShoppingController extends Controller
             $coupons   = [];
 
             return $this->success([
-                'order'          => $order,
-                'discounts'      => $discounts,
-                'coupons'        => $coupons,
-                'address'        => $defaultAddress,
-                'invoice_status' => settings('invoice_status'),
-            ], true);
+                'order'     => $order,
+                'discounts' => $discounts,
+                'coupons'   => $coupons,
+                'address'   => $defaultAddress,
+            ]);
         } catch (\Exception $exception) {
             return $this->failed($exception->getMessage());
         }
