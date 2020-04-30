@@ -325,10 +325,10 @@ class Order extends Model implements DiscountSubjectContract, PaymentsSubjectCon
 
 	public function getRefundStatusAttribute()
 	{
-		$refunds = $this->refunds->where('status', '<>', 3);
+		/*$refunds = $this->refunds->where('status', '<>', 3);
 		if ($refunds->count() > 0) {
 			return $refunds->first()->type;
-		}
+		}*/
 
 		return 0;
 	}
