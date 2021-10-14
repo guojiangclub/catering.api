@@ -43,7 +43,7 @@ chmod -R 0777 bootstrap
 
 ## 小程序
 
-小程序源码地址：[果酱餐饮小程序源码](https://gitee.com/guojiangclub/catering.miniprogram)
+小程序源码地址：[果酱餐饮小程序源码](https://github.com/guojiangclub/catering.miniprogram)
 
 ## 交流
 
